@@ -30,3 +30,9 @@
 *.exe
 *.out
 *.app
+
+*.dll
+Engine/Debug
+Engine.vcxproj.filters
+Engine.vcxproj.user
+Engine/.vs
