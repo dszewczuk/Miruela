@@ -13,7 +13,9 @@
 	Also add information on how to contact you by electronic and paper mail.
 */
 
-#include "Rendering/Window.hpp"
+#include "System/Window.hpp"
+#include "System/EventManager.hpp"
+
 #include "Rendering/MeshRenderer.hpp"
 #include "Rendering/ShaderProgram.hpp"
 #include "Rendering/Shader.hpp"
@@ -23,6 +25,7 @@
 int main()
 {
 	Miruela::Window window(800, 600);
+	Miruela::EventManager eventManager;
 
 	std::vector<Miruela::Vertex> vertices = 
 	{
@@ -43,14 +46,11 @@ int main()
 
 	shaders.clear();
 
-	bool quit = false;
-	while (!quit)
+	while (!eventManager.isWindowClosed())
 	{
-		SDL_Event event;
-		while (SDL_PollEvent(&event))
+		while (eventManager.pollEvents())
 		{
-			if (event.type == SDL_QUIT)
-				quit = true;
+
 		}
 		window.clear(0.2, 0.2, 0.2, 0.0);
 
