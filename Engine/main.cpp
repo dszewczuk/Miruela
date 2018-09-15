@@ -15,6 +15,8 @@
 
 #include "Rendering/Window.hpp"
 #include "Rendering/MeshRenderer.hpp"
+#include "Rendering/ShaderProgram.hpp"
+#include "Rendering/Shader.hpp"
 
 #undef main
 
@@ -31,6 +33,16 @@ int main()
 
 	Miruela::MeshRenderer meshRenderer(vertices);
 
+	std::vector<Miruela::Shader*> shaders = 
+	{
+		new Miruela::Shader("vs.glsl", Miruela::Shader::VERTEX),
+		new Miruela::Shader("fs.glsl", Miruela::Shader::FRAGMENT)
+	};
+
+	Miruela::ShaderProgram program(shaders);
+
+	shaders.clear();
+
 	bool quit = false;
 	while (!quit)
 	{
@@ -42,6 +54,7 @@ int main()
 		}
 		window.clear(0.2, 0.2, 0.2, 0.0);
 
+		program.bind();
 		meshRenderer.render();
 
 		window.render();

@@ -36,3 +36,5 @@ Engine/Debug
 Engine.vcxproj.filters
 Engine.vcxproj.user
 Engine/.vs
+
+.vs

@@ -15,8 +15,6 @@
 
 #pragma once
 
-#include <GL/glew.h>
-
 #include <vector>
 
 namespace Miruela
@@ -35,8 +33,8 @@ namespace Miruela
 
 		void render() const;
 	private:
-		GLuint vbo;
-		GLuint vao;
+		unsigned int vbo;
+		unsigned int vao;
 		int verticesCount;
 	};
 }

@@ -13,39 +13,27 @@
 	Also add information on how to contact you by electronic and paper mail.
 */
 
-#include "MeshRenderer.hpp"
+#pragma once
 
-#include <GL/glew.h>
+#include <string>
 
 namespace Miruela
 {
-	MeshRenderer::MeshRenderer(const std::vector<Vertex> & vertices)
-		:verticesCount(vertices.size())
+	class Shader
 	{
-		glGenVertexArrays(1, &vao);
-		glBindVertexArray(vao);
+	public:
+		enum Type
+		{
+			VERTEX = 0,
+			FRAGMENT
+		};
 
-		glGenBuffers(1, &vbo);
-		glBindBuffer(GL_ARRAY_BUFFER, vbo);
+		Shader(const std::string & filePath, const Type & type);
+		~Shader();
 
-		glBufferData(GL_ARRAY_BUFFER, sizeof(Vertex) * vertices.size(), &vertices[0], GL_STATIC_DRAW);
+	private:
+		unsigned int shader;
 
-		glEnableVertexAttribArray(0);
-		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, nullptr);
-	}
-
-
-	MeshRenderer::~MeshRenderer()
-	{
-		glDeleteVertexArrays(1, &vao);
-	}
-
-
-	void MeshRenderer::render() const
-	{
-		glBindVertexArray(vao);
-		glBindBuffer(GL_ARRAY_BUFFER, vbo);
-
-		glDrawArrays(GL_TRIANGLES, 0, verticesCount);
-	}
+		friend class ShaderProgram;
+	};
 }
