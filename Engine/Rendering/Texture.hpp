@@ -15,32 +15,18 @@
 
 #pragma once
 
-#include <vector>
+#include <string>
 
 namespace Miruela
 {
-	struct vec3
-	{
-		float x, y, z;
-	};
-
-	struct vec2
-	{
-		float x, y;
-	};
-
-
-	class MeshRenderer
+	class Texture
 	{
 	public:
-		MeshRenderer(const std::vector<vec3> & vertices, const std::vector<vec2> & uvs);
-		~MeshRenderer();
+		Texture(const std::string & filePath);
+		~Texture();
 
-		void render() const;
+		void bind();
 	private:
-		unsigned int vbo;
-		unsigned int vao;
-		unsigned int tbo;
-		int verticesCount;
+		unsigned int texture;
 	};
 }

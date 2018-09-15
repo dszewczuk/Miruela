@@ -23,6 +23,7 @@
     <ClCompile Include="Rendering\MeshRenderer.cpp" />
     <ClCompile Include="Rendering\Shader.cpp" />
     <ClCompile Include="Rendering\ShaderProgram.cpp" />
+    <ClCompile Include="Rendering\Texture.cpp" />
     <ClCompile Include="System\EventManager.cpp" />
     <ClCompile Include="System\Window.cpp" />
   </ItemGroup>
@@ -30,6 +31,7 @@
     <ClInclude Include="Rendering\MeshRenderer.hpp" />
     <ClInclude Include="Rendering\Shader.hpp" />
     <ClInclude Include="Rendering\ShaderProgram.hpp" />
+    <ClInclude Include="Rendering\Texture.hpp" />
     <ClInclude Include="System\EventManager.hpp" />
     <ClInclude Include="System\Window.hpp" />
   </ItemGroup>
@@ -91,16 +93,16 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\VC-LIB\glew-2.1.0\include;C:\VC-LIB\SDL2-2.0.8\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\VC-LIB\glew-2.1.0\lib\Release\Win32;C:\VC-LIB\SDL2-2.0.8\lib\x86;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\VC-LIB\FreeImage\Dist\x32;C:\VC-LIB\glm\glm;C:\VC-LIB\glew-2.1.0\include;C:\VC-LIB\SDL2-2.0.8\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\VC-LIB\FreeImage\Dist\x32;C:\VC-LIB\glew-2.1.0\lib\Release\Win32;C:\VC-LIB\SDL2-2.0.8\lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>C:\VC-LIB\glew-2.1.0\include;C:\VC-LIB\SDL2-2.0.8\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\VC-LIB\glew-2.1.0\lib\Release\Win32;C:\VC-LIB\SDL2-2.0.8\lib\x86;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\VC-LIB\FreeImage\Dist\x32;C:\VC-LIB\glm\glm;C:\VC-LIB\glew-2.1.0\include;C:\VC-LIB\SDL2-2.0.8\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\VC-LIB\FreeImage\Dist\x32;C:\VC-LIB\glew-2.1.0\lib\Release\Win32;C:\VC-LIB\SDL2-2.0.8\lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
@@ -117,7 +119,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;opengl32.lib;glew32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;opengl32.lib;glew32.lib;FreeImage.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -150,7 +152,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;opengl32.lib;glew32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;opengl32.lib;glew32.lib;FreeImage.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">

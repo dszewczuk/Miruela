@@ -19,7 +19,7 @@
 
 namespace Miruela
 {
-	MeshRenderer::MeshRenderer(const std::vector<Vertex> & vertices)
+	MeshRenderer::MeshRenderer(const std::vector<vec3> & vertices, const std::vector<vec2> & uvs)
 		:verticesCount(vertices.size())
 	{
 		glGenVertexArrays(1, &vao);
@@ -28,10 +28,19 @@ namespace Miruela
 		glGenBuffers(1, &vbo);
 		glBindBuffer(GL_ARRAY_BUFFER, vbo);
 
-		glBufferData(GL_ARRAY_BUFFER, sizeof(Vertex) * vertices.size(), &vertices[0], GL_STATIC_DRAW);
+		glBufferData(GL_ARRAY_BUFFER, sizeof(vec3) * vertices.size(), &vertices[0], GL_STATIC_DRAW);
 
 		glEnableVertexAttribArray(0);
 		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, nullptr);
+
+		glGenBuffers(1, &tbo);
+		glBindBuffer(GL_ARRAY_BUFFER, tbo);
+
+		glBufferData(GL_ARRAY_BUFFER, sizeof(vec2) * uvs.size(), &uvs[0], GL_STATIC_DRAW);
+
+		glEnableVertexAttribArray(1);
+		glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 0, nullptr);
+
 	}
 
 
