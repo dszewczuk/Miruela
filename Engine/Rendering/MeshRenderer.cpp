@@ -19,11 +19,16 @@
 
 namespace Miruela
 {
-	MeshRenderer::MeshRenderer(const std::vector<vec3> & vertices, const std::vector<vec2> & uvs)
-		:verticesCount(vertices.size())
+	MeshRenderer::MeshRenderer(const std::vector<vec3> & vertices, const std::vector<vec2> & uvs, const std::vector<unsigned int> & indices)
+		:indicesCount(indices.size())
 	{
 		glGenVertexArrays(1, &vao);
 		glBindVertexArray(vao);
+
+		glGenBuffers(1, &ibo);
+		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo);
+		
+		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(unsigned int) * indices.size(), &indices[0], GL_STATIC_DRAW);
 
 		glGenBuffers(1, &vbo);
 		glBindBuffer(GL_ARRAY_BUFFER, vbo);
@@ -53,8 +58,8 @@ namespace Miruela
 	void MeshRenderer::render() const
 	{
 		glBindVertexArray(vao);
-		glBindBuffer(GL_ARRAY_BUFFER, vbo);
+		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo);
 
-		glDrawArrays(GL_TRIANGLES, 0, verticesCount);
+		glDrawElements(GL_TRIANGLES, indicesCount, GL_UNSIGNED_INT, nullptr);
 	}
 }

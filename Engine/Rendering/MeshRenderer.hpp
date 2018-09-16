@@ -33,7 +33,7 @@ namespace Miruela
 	class MeshRenderer
 	{
 	public:
-		MeshRenderer(const std::vector<vec3> & vertices, const std::vector<vec2> & uvs);
+		MeshRenderer(const std::vector<vec3> & vertices, const std::vector<vec2> & uvs, const std::vector<unsigned int> & indices);
 		~MeshRenderer();
 
 		void render() const;
@@ -41,6 +41,7 @@ namespace Miruela
 		unsigned int vbo;
 		unsigned int vao;
 		unsigned int tbo;
-		int verticesCount;
+		unsigned int ibo;
+		unsigned int indicesCount;
 	};
 }

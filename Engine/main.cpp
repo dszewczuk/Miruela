@@ -30,19 +30,27 @@ int main()
 
 	std::vector<Miruela::vec3> vertices = 
 	{
-		{ 0.f, 0.5f, 0.0f },
+		{ -0.5f, 0.5f, 0.0f },
+		{ 0.5f, 0.5f, 0.0f },
 		{ -0.5f, -0.5f, 0.0f },
-		{ 0.5f, -0.5f, 0.0f },
+		{ 0.5f, -0.5f, 0.0f }
 	};
 
 	std::vector<Miruela::vec2> uvs = 
 	{
-		{ 0.5f, 0.5f },
-		{ 0.25, 0.25 },
-		{ 0.5, 0.25 }
+		{ 0.f, 1.0f },
+		{ 1.f, 1.f},
+		{ 0.f, 0.f },
+		{ 1.f, 0.f }
 	};
 
-	Miruela::MeshRenderer meshRenderer(vertices, uvs);
+	std::vector<unsigned int> indices =
+	{
+		0, 1, 2,
+		2, 3, 1
+	};
+
+	Miruela::MeshRenderer meshRenderer(vertices, uvs, indices);
 
 	std::vector<Miruela::Shader*> shaders = 
 	{

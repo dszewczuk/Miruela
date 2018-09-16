@@ -25,7 +25,7 @@ namespace Miruela
 		Texture(const std::string & filePath);
 		~Texture();
 
-		void bind();
+		void bind() const;
 	private:
 		unsigned int texture;
 	};
