@@ -21,6 +21,11 @@
 #include "Rendering/Shader.hpp"
 #include "Rendering/Texture.hpp"
 
+#include "Math/Vector3.hpp"
+#include "Math/Vector2.hpp"
+
+#include <iostream>
+
 #undef main
 
 int main()
@@ -28,7 +33,7 @@ int main()
 	Miruela::Window window(800, 600);
 	Miruela::EventManager eventManager;
 
-	std::vector<Miruela::vec3> vertices = 
+	std::vector<Miruela::Vector3> vertices = 
 	{
 		{ -0.5f, 0.5f, 0.0f },
 		{ 0.5f, 0.5f, 0.0f },
@@ -36,7 +41,7 @@ int main()
 		{ 0.5f, -0.5f, 0.0f }
 	};
 
-	std::vector<Miruela::vec2> uvs = 
+	std::vector<Miruela::Vector2> uvs =
 	{
 		{ 0.f, 1.0f },
 		{ 1.f, 1.f},
@@ -73,6 +78,7 @@ int main()
 		window.clear(0.2, 0.2, 0.2, 0.0);
 
 		program.bind();
+
 		texture.bind();
 		meshRenderer.render();
 

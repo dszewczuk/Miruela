@@ -19,21 +19,13 @@
 
 namespace Miruela
 {
-	struct vec3
-	{
-		float x, y, z;
-	};
-
-	struct vec2
-	{
-		float x, y;
-	};
-
+	struct Vector3;
+	struct Vector2;
 
 	class MeshRenderer
 	{
 	public:
-		MeshRenderer(const std::vector<vec3> & vertices, const std::vector<vec2> & uvs, const std::vector<unsigned int> & indices);
+		MeshRenderer(const std::vector<Vector3> & vertices, const std::vector<Vector2> & uvs, const std::vector<unsigned int> & indices);
 		~MeshRenderer();
 
 		void render() const;

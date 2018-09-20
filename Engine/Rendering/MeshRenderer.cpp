@@ -15,11 +15,14 @@
 
 #include "MeshRenderer.hpp"
 
+#include "../Math/Vector3.hpp"
+#include "../Math/Vector2.hpp"
+
 #include <GL/glew.h>
 
 namespace Miruela
 {
-	MeshRenderer::MeshRenderer(const std::vector<vec3> & vertices, const std::vector<vec2> & uvs, const std::vector<unsigned int> & indices)
+	MeshRenderer::MeshRenderer(const std::vector<Vector3> & vertices, const std::vector<Vector2> & uvs, const std::vector<unsigned int> & indices)
 		:indicesCount(indices.size())
 	{
 		glGenVertexArrays(1, &vao);
@@ -33,7 +36,7 @@ namespace Miruela
 		glGenBuffers(1, &vbo);
 		glBindBuffer(GL_ARRAY_BUFFER, vbo);
 
-		glBufferData(GL_ARRAY_BUFFER, sizeof(vec3) * vertices.size(), &vertices[0], GL_STATIC_DRAW);
+		glBufferData(GL_ARRAY_BUFFER, sizeof(Vector3) * vertices.size(), &vertices[0], GL_STATIC_DRAW);
 
 		glEnableVertexAttribArray(0);
 		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, nullptr);
@@ -41,7 +44,7 @@ namespace Miruela
 		glGenBuffers(1, &tbo);
 		glBindBuffer(GL_ARRAY_BUFFER, tbo);
 
-		glBufferData(GL_ARRAY_BUFFER, sizeof(vec2) * uvs.size(), &uvs[0], GL_STATIC_DRAW);
+		glBufferData(GL_ARRAY_BUFFER, sizeof(Vector2) * uvs.size(), &uvs[0], GL_STATIC_DRAW);
 
 		glEnableVertexAttribArray(1);
 		glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 0, nullptr);

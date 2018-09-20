@@ -55,9 +55,20 @@ namespace Miruela
 		glDeleteProgram(shaderProgram);
 	}
 
-
+	
 	void ShaderProgram::bind() const
 	{
 		glUseProgram(shaderProgram);
+	}
+
+
+	unsigned int ShaderProgram::getUniformLocation(const std::string & name)
+	{
+		unsigned int location = glGetUniformLocation(shaderProgram, name.data());
+		if (location < 0)
+		{
+			return 0;
+		}
+		return location;
 	}
 }

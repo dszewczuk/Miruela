@@ -16,6 +16,7 @@
 #pragma once
 
 #include <vector>
+#include <string>
 
 namespace Miruela
 {
@@ -27,6 +28,8 @@ namespace Miruela
 		~ShaderProgram();
 
 		void bind() const;
+	private:
+		unsigned int getUniformLocation(const std::string & name);
 	private:
 		unsigned int shaderProgram;
 	};
