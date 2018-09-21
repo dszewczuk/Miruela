@@ -15,30 +15,23 @@
 
 #pragma once
 
-#include <vector>
-
-#include "Buffer.hpp"
-#include "VertexArray.hpp"
+#include <string>
+#include <deque>
 
 namespace Miruela
 {
-	struct Vector3;
-	struct Vector2;
-
-	class Mesh
+	class ShaderProgram;
+	class Mesh;
+	class Renderer
 	{
 	public:
-		Mesh(const std::vector<Vector3> & vertices, const std::vector<Vector2> & uvs, const std::vector<unsigned int> & indices);
+		Renderer(const std::string & vsPath, const std::string & fsPath);
+		~Renderer();
 
-		unsigned int getIndicesCount();
-
-		void bind() const;
+		void submit(Mesh * mesh);
+		void render();
 	private:
-		unsigned int indicesCount;
-
-		VertexArray vertexArray;
-		Buffer vertex;
-		Buffer textureCoord;
-		Buffer element;
+		ShaderProgram * shaderProgram;
+		std::deque<Mesh*> meshes;
 	};
 }

@@ -35,11 +35,15 @@ namespace Miruela
 	}
 
 
+	unsigned int Mesh::getIndicesCount()
+	{
+		return indicesCount;
+	}
+
+
 	void Mesh::bind() const
 	{
 		vertexArray.bind();
 		element.bind();
-
-		glDrawElements(GL_TRIANGLES, indicesCount, GL_UNSIGNED_INT, nullptr);//Temporary here
 	}
 }

@@ -24,6 +24,7 @@
     <ClCompile Include="Math\Vector3.cpp" />
     <ClCompile Include="Rendering\Buffer.cpp" />
     <ClCompile Include="Rendering\Mesh.cpp" />
+    <ClCompile Include="Rendering\Renderer.cpp" />
     <ClCompile Include="Rendering\Shader.cpp" />
     <ClCompile Include="Rendering\ShaderProgram.cpp" />
     <ClCompile Include="Rendering\Texture.cpp" />
@@ -36,6 +37,7 @@
     <ClInclude Include="Math\Vector3.hpp" />
     <ClInclude Include="Rendering\Buffer.hpp" />
     <ClInclude Include="Rendering\Mesh.hpp" />
+    <ClInclude Include="Rendering\Renderer.hpp" />
     <ClInclude Include="Rendering\Shader.hpp" />
     <ClInclude Include="Rendering\ShaderProgram.hpp" />
     <ClInclude Include="Rendering\Texture.hpp" />

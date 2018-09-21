@@ -22,9 +22,12 @@
 #include "Rendering/Texture.hpp"
 #include "Rendering/Buffer.hpp"
 #include "Rendering/VertexArray.hpp"
+#include "Rendering/Renderer.hpp"
 
 #include "Math/Vector3.hpp"
 #include "Math/Vector2.hpp"
+
+#include <GL/glew.h>
 
 #undef main
 
@@ -58,17 +61,9 @@ int main()
 
 	Miruela::Mesh mesh(vertices, uvs, indices);
 
-	std::vector<Miruela::Shader*> shaders = 
-	{
-		new Miruela::Shader("vs.glsl", Miruela::Shader::VERTEX),
-		new Miruela::Shader("fs.glsl", Miruela::Shader::FRAGMENT)
-	};
-
-	Miruela::ShaderProgram program(shaders);
+	Miruela::Renderer renderer("vs.glsl", "fs.glsl");
 
 	Miruela::Texture texture("texture.png");
-
-	shaders.clear();
 
 	while (!eventManager.isWindowClosed())
 	{
@@ -78,10 +73,8 @@ int main()
 		}
 		window.clear(0.2, 0.2, 0.2, 0.0);
 
-		program.bind();
-
-		texture.bind();
-		mesh.bind();
+		renderer.submit(&mesh);
+		renderer.render();
 
 		window.render();
 	}
