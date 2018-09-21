@@ -26,9 +26,6 @@
 #include "Math/Vector3.hpp"
 #include "Math/Vector2.hpp"
 
-#include <iostream>
-#include <GL/glew.h>
-
 #undef main
 
 int main()

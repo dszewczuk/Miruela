@@ -30,10 +30,7 @@ namespace Miruela
 	{
 		vertexArray.bind();
 
-		vertex.bind();
 		vertex.enableVertexAttrib(0, 3, GL_FLOAT);
-
-		textureCoord.bind();
 		textureCoord.enableVertexAttrib(1, 2, GL_FLOAT);
 	}
 
