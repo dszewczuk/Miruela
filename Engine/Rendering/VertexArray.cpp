@@ -13,18 +13,26 @@
 	Also add information on how to contact you by electronic and paper mail.
 */
 
-#include "EventManager.hpp"
+#include "VertexArray.hpp"
+
+#include <GL/glew.h>
 
 namespace Miruela
 {
-	int EventManager::pollEvents()
+	VertexArray::VertexArray()
 	{
-		return SDL_PollEvent(&event);
+		glGenVertexArrays(1, &index);
 	}
 
 
-	bool EventManager::isWindowClosed()
+	VertexArray::~VertexArray()
 	{
-		return event.type == SDL_QUIT;
+		glDeleteVertexArrays(1, &index);
+	}
+
+
+	void VertexArray::bind() const
+	{
+		glBindVertexArray(index);
 	}
 }

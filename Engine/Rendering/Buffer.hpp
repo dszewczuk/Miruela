@@ -13,18 +13,33 @@
 	Also add information on how to contact you by electronic and paper mail.
 */
 
-#include "EventManager.hpp"
+#pragma once
 
 namespace Miruela
 {
-	int EventManager::pollEvents()
+	class Buffer
 	{
-		return SDL_PollEvent(&event);
-	}
+	public:
+		enum Type
+		{
+			ELEMENT,
+			BUFFER
+		};
 
+		enum Usage
+		{
+			STATIC,
+			DYNAMIC
+		};
 
-	bool EventManager::isWindowClosed()
-	{
-		return event.type == SDL_QUIT;
-	}
+		Buffer(const Type & type, const Usage & usage, const unsigned int & size, const void * data);
+		~Buffer();
+
+		void enableVertexAttrib(const int & index, const int & size, const int & valueType) const;
+
+		void bind() const;
+	private:
+		unsigned int index;
+		unsigned int bufferType;
+	};
 }

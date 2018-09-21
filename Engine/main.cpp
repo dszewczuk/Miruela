@@ -21,10 +21,14 @@
 #include "Rendering/Shader.hpp"
 #include "Rendering/Texture.hpp"
 
+#include "Rendering/Buffer.hpp"
+#include "Rendering/VertexArray.hpp"
+
 #include "Math/Vector3.hpp"
 #include "Math/Vector2.hpp"
 
 #include <iostream>
+#include <GL/glew.h>
 
 #undef main
 
@@ -55,7 +59,16 @@ int main()
 		2, 3, 1
 	};
 
-	Miruela::MeshRenderer meshRenderer(vertices, uvs, indices);
+	Miruela::VertexArray vao;
+	vao.bind();
+
+	Miruela::Buffer indexBuffer(Miruela::Buffer::Type::ELEMENT, Miruela::Buffer::Usage::STATIC, sizeof(unsigned int) * indices.size(), &indices[0]);
+
+	Miruela::Buffer vertexBuffer(Miruela::Buffer::Type::BUFFER, Miruela::Buffer::Usage::STATIC, sizeof(Miruela::Vector3) * vertices.size(), &vertices[0]);
+	vertexBuffer.enableVertexAttrib(0, 3, GL_FLOAT);
+
+	Miruela::Buffer uvBufffer(Miruela::Buffer::Type::BUFFER, Miruela::Buffer::Usage::STATIC, sizeof(Miruela::Vector2) * uvs.size(), &uvs[0]);
+	uvBufffer.enableVertexAttrib(1, 2, GL_FLOAT);
 
 	std::vector<Miruela::Shader*> shaders = 
 	{
@@ -80,7 +93,9 @@ int main()
 		program.bind();
 
 		texture.bind();
-		meshRenderer.render();
+		vertexBuffer.bind();
+		indexBuffer.bind();
+		glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, nullptr);
 
 		window.render();
 	}

@@ -13,18 +13,18 @@
 	Also add information on how to contact you by electronic and paper mail.
 */
 
-#include "EventManager.hpp"
+#pragma once
 
 namespace Miruela
 {
-	int EventManager::pollEvents()
+	class VertexArray
 	{
-		return SDL_PollEvent(&event);
-	}
+	public:
+		VertexArray();
+		~VertexArray();
 
-
-	bool EventManager::isWindowClosed()
-	{
-		return event.type == SDL_QUIT;
-	}
+		void bind() const;
+	private:
+		unsigned int index;
+	};
 }
