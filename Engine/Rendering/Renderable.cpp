@@ -13,26 +13,18 @@
 	Also add information on how to contact you by electronic and paper mail.
 */
 
-#pragma once
-
-#include <string>
-#include <deque>
+#include "Renderable.hpp"
 
 namespace Miruela
 {
-	class Renderable;
-	class ShaderProgram;
-	class Mesh;
-	class Renderer
+	Renderable::Renderable(const unsigned int & indicesCount)
+		:indicesCount(indicesCount)
 	{
-	public:
-		Renderer(const std::string & vsPath, const std::string & fsPath);
-		~Renderer();
+	}
 
-		void submit(Renderable * mesh);
-		void render();
-	private:
-		ShaderProgram * shaderProgram;
-		std::deque<Renderable*> renderables;
-	};
+
+	unsigned int Miruela::Renderable::getIndicesCount() const
+	{
+		return indicesCount;
+	}
 }

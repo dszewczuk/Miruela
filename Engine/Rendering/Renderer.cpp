@@ -19,6 +19,7 @@
 #include "Shader.hpp"
 #include "ShaderProgram.hpp"
 #include "Mesh.hpp"
+#include "Renderable.hpp"
 
 #include <GL/glew.h>
 
@@ -39,25 +40,25 @@ namespace Miruela
 
 	Renderer::~Renderer()
 	{
-		meshes.clear();
+		renderables.clear();
 		delete shaderProgram;
 	}
 
 
-	void Renderer::submit(Mesh * mesh)
+	void Renderer::submit(Renderable * mesh)
 	{
-		meshes.push_back(mesh);
+		renderables.push_back(mesh);
 	}
 
 
 	void Renderer::render()
 	{
 		shaderProgram->bind();
-		while(!meshes.empty())
+		while(!renderables.empty())
 		{
-			auto mesh = meshes.front(); meshes.pop_front();
-			mesh->bind();
-			glDrawElements(GL_TRIANGLES, mesh->getIndicesCount(), GL_UNSIGNED_INT, nullptr);
+			auto renderable = renderables.front(); renderables.pop_front();
+			renderable->render();
+			glDrawElements(GL_TRIANGLES, renderable->getIndicesCount(), GL_UNSIGNED_INT, nullptr);
 		}
 	}
 }

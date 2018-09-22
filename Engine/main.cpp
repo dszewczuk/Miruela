@@ -23,11 +23,10 @@
 #include "Rendering/Buffer.hpp"
 #include "Rendering/VertexArray.hpp"
 #include "Rendering/Renderer.hpp"
+#include "Rendering/Sprite.hpp"
 
 #include "Math/Vector3.hpp"
 #include "Math/Vector2.hpp"
-
-#include <GL/glew.h>
 
 #undef main
 
@@ -36,34 +35,11 @@ int main()
 	Miruela::Window window(800, 600);
 	Miruela::EventManager eventManager;
 
-	std::vector<Miruela::Vector3> vertices = 
-	{
-		{ -0.5f, 0.5f, 0.0f },
-		{ 0.5f, 0.5f, 0.0f },
-		{ -0.5f, -0.5f, 0.0f },
-		{ 0.5f, -0.5f, 0.0f }
-	};
-
-	std::vector<Miruela::Vector2> uvs =
-	{
-		{ 0.f, 1.0f },
-		{ 1.f, 1.f},
-		{ 0.f, 0.f },
-		{ 1.f, 0.f }
-	};
-
-	std::vector<unsigned int> indices =
-	{
-		0, 1, 2,
-		2, 3, 1
-	};
-
-
-	Miruela::Mesh mesh(vertices, uvs, indices);
-
 	Miruela::Renderer renderer("vs.glsl", "fs.glsl");
 
 	Miruela::Texture texture("texture.png");
+	
+	Miruela::Sprite sprite(&texture);
 
 	while (!eventManager.isWindowClosed())
 	{
@@ -73,7 +49,7 @@ int main()
 		}
 		window.clear(0.2, 0.2, 0.2, 0.0);
 
-		renderer.submit(&mesh);
+		renderer.submit(&sprite);
 		renderer.render();
 
 		window.render();

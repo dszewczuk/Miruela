@@ -13,26 +13,56 @@
 	Also add information on how to contact you by electronic and paper mail.
 */
 
-#pragma once
+#include "Sprite.hpp"
 
-#include <string>
-#include <deque>
+#include "Texture.hpp"
+#include "Mesh.hpp"
+
+#include "../Math/Vector2.hpp"
+#include "../Math/Vector3.hpp"
+
+#include <vector>
 
 namespace Miruela
 {
-	class Renderable;
-	class ShaderProgram;
-	class Mesh;
-	class Renderer
+	Sprite::Sprite(Texture * texture)
+		:Renderable(6), texture(texture)
 	{
-	public:
-		Renderer(const std::string & vsPath, const std::string & fsPath);
-		~Renderer();
+		std::vector<Miruela::Vector3> vertices =
+		{
+			{ -0.5f, 0.5f, 0.0f },
+			{ 0.5f, 0.5f, 0.0f },
+			{ -0.5f, -0.5f, 0.0f },
+			{ 0.5f, -0.5f, 0.0f }
+		};
 
-		void submit(Renderable * mesh);
-		void render();
-	private:
-		ShaderProgram * shaderProgram;
-		std::deque<Renderable*> renderables;
-	};
+		std::vector<Miruela::Vector2> uvs =
+		{
+			{ 0.f, 1.0f },
+			{ 1.f, 1.f },
+			{ 0.f, 0.f },
+			{ 1.f, 0.f }
+		};
+
+		std::vector<unsigned int> indices =
+		{
+			0, 1, 2,
+			2, 3, 1
+		};
+
+		mesh = new Mesh(vertices, uvs, indices);
+	}
+
+
+	Sprite::~Sprite()
+	{
+		delete mesh;
+	}
+
+
+	void Sprite::render()
+	{
+		texture->bind();
+		mesh->bind();
+	}
 }

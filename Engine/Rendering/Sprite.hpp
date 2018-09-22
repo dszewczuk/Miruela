@@ -15,24 +15,22 @@
 
 #pragma once
 
-#include <string>
-#include <deque>
+#include "Renderable.hpp"
 
 namespace Miruela
 {
-	class Renderable;
-	class ShaderProgram;
 	class Mesh;
-	class Renderer
+	class Texture;
+
+	class Sprite : public Renderable
 	{
 	public:
-		Renderer(const std::string & vsPath, const std::string & fsPath);
-		~Renderer();
+		Sprite(Texture * texture);
+		~Sprite();
 
-		void submit(Renderable * mesh);
-		void render();
+		void render() override;
 	private:
-		ShaderProgram * shaderProgram;
-		std::deque<Renderable*> renderables;
+		Mesh * mesh;
+		Texture * texture;
 	};
 }

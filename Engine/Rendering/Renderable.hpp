@@ -15,24 +15,17 @@
 
 #pragma once
 
-#include <string>
-#include <deque>
-
 namespace Miruela
 {
-	class Renderable;
-	class ShaderProgram;
-	class Mesh;
-	class Renderer
+	class Renderable
 	{
 	public:
-		Renderer(const std::string & vsPath, const std::string & fsPath);
-		~Renderer();
+		Renderable(const unsigned int & indicesCount);
 
-		void submit(Renderable * mesh);
-		void render();
+		virtual void render() = 0;
+
+		unsigned int getIndicesCount() const;
 	private:
-		ShaderProgram * shaderProgram;
-		std::deque<Renderable*> renderables;
+		unsigned int indicesCount;
 	};
 }
