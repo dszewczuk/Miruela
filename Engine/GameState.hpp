@@ -15,20 +15,24 @@
 
 #pragma once
 
-#include <SDL.h> //gotta delete this soon :(
-
 namespace Miruela
 {
-	class Window
+	class Game;
+	class EventManager;
+
+	class GameState
 	{
 	public:
-		Window(const int & width, const int & height);
-		~Window();
-		
-		void clear(const float & r, const float & g, const float & b, const float & a) const;
-		void render() const;
+		virtual void update(const float & deltaTime) = 0;
+		virtual void handleEvent(EventManager * eventManager) = 0;
+		virtual void draw() = 0;
+
+		Game * getGame() const
+		{
+			return game;
+		}
 	private:
-		SDL_Window * window;
-		SDL_GLContext context;
+		Game * game;
+		friend class Game;
 	};
 }

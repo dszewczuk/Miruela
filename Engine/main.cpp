@@ -13,47 +13,49 @@
 	Also add information on how to contact you by electronic and paper mail.
 */
 
-#include "System/Window.hpp"
-#include "System/EventManager.hpp"
+#include "Game.hpp"
+#include "GameState.hpp"
 
-#include "Rendering/Mesh.hpp"
-#include "Rendering/ShaderProgram.hpp"
-#include "Rendering/Shader.hpp"
 #include "Rendering/Texture.hpp"
-#include "Rendering/Buffer.hpp"
-#include "Rendering/VertexArray.hpp"
-#include "Rendering/Renderer.hpp"
 #include "Rendering/Sprite.hpp"
+#include "Rendering/Renderer.hpp"
 
-#include "Math/Vector3.hpp"
-#include "Math/Vector2.hpp"
+#include "System/EventManager.hpp"
 
 #undef main
 
+class MainGameState : public Miruela::GameState
+{
+public:
+	MainGameState()
+	{
+		texture = new Miruela::Texture("texture.png");
+		sprite = new Miruela::Sprite(texture);
+	}
+
+	void draw() override
+	{
+		getGame()->getRenderer()->submit(sprite);
+	}
+
+	void update(const float & deltaTime) override
+	{
+	}
+
+	void handleEvent(Miruela::EventManager * eventManager)
+	{
+	}
+private:
+	Miruela::Texture * texture;
+	Miruela::Sprite * sprite;
+};
+
 int main()
 {
-	Miruela::Window window(800, 600);
-	Miruela::EventManager eventManager;
-
-	Miruela::Renderer renderer("vs.glsl", "fs.glsl");
-
-	Miruela::Texture texture("texture.png");
-	
-	Miruela::Sprite sprite(&texture);
-
-	while (!eventManager.isWindowClosed())
-	{
-		while (eventManager.pollEvents())
-		{
-
-		}
-		window.clear(0.2, 0.2, 0.2, 0.0);
-
-		renderer.submit(&sprite);
-		renderer.render();
-
-		window.render();
-	}
+	Miruela::Game game(800, 600);
+	MainGameState state;
+	game.setGameState(&state);
+	game.run();
 
 	return 0;
 }

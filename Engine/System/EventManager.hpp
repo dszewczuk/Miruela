@@ -15,7 +15,7 @@
 
 #pragma once
 
-#include <SDL_events.h>
+#include <SDL_events.h> //gotta delete this soon :(
 
 namespace Miruela
 {
