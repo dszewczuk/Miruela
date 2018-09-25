@@ -23,35 +23,44 @@ namespace Miruela
 {
 	Matrix::Matrix()
 	{
-		identity();
-	}
-
-
-	void Matrix::identity()
-	{
 		memset(&value, 0, sizeof(float) * 16);
-		value[0][0] = 1.0f;
-		value[1][1] = 1.0f;
-		value[2][2] = 1.0f;
-		value[3][3] = 1.0f;
 	}
 
 
-	void Matrix::scale(const Vector3 & translation)
+	Matrix::Matrix(const float & v)
 	{
-		for (auto & column : value)
-		{
-			column[0] *= translation.x;
-			column[1] *= translation.y;
-			column[2] *= translation.z;
-		}
+		Matrix();
+		value[0][0] = v;
+		value[1][1] = v;
+		value[2][2] = v;
+		value[3][3] = v;
 	}
 
 
-	void Matrix::translate(const Vector3 & translation)
+	Matrix Matrix::identity()
 	{
-		value[3][0] = translation.x;
-		value[3][1] = translation.y;
-		value[3][2] = translation.z;
+		return Matrix(1.0f);
+	}
+
+
+	Matrix Matrix::scale(const Matrix & matrix, const Vector3 & scaling)
+	{
+		Matrix m = matrix;
+		m.value[0][0] = scaling.x;
+		m.value[1][1] = scaling.y;
+		m.value[2][2] = scaling.z;
+		m.value[3][3] = 1.0f;
+		return m;
+	}
+
+
+	Matrix Matrix::translate(const Matrix & matrix, const Vector3 & translation)
+	{
+		Matrix m = matrix;
+		m.value[3][0] = translation.x;
+		m.value[3][1] = translation.y;
+		m.value[3][2] = translation.z;
+		m.value[3][3] = 1.0f;
+		return m;
 	}
 }

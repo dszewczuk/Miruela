@@ -25,9 +25,10 @@ namespace Miruela
 		std::array<std::array<float, 4>, 4> value;
 
 		Matrix();
+		Matrix(const float & value);
 
-		void identity();
-		void scale(const Vector3 & translation);
-		void translate(const Vector3 & translation);
+		static Matrix identity();
+		static Matrix scale(const Matrix & matrix, const Vector3 & scaling);
+		static Matrix translate(const Matrix & matrix, const Vector3 & translation);
 	};
 }

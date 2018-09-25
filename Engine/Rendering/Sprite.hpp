@@ -17,8 +17,6 @@
 
 #include "Renderable.hpp"
 
-#include "../Math/Matrix.hpp"
-
 namespace Miruela
 {
 	class Mesh;
@@ -34,6 +32,5 @@ namespace Miruela
 	private:
 		Mesh * mesh;
 		Texture * texture;
-		Matrix mat; //temporary here, just put here to test matrices
 	};
 }
