@@ -18,14 +18,19 @@
 #include <vector>
 #include <string>
 
+#include "../Math/Matrix.hpp"
+
 namespace Miruela
 {
+	struct Matrix;
 	class Shader;
 	class ShaderProgram
 	{
 	public:
 		ShaderProgram(const std::vector<Shader*> & shaders);
 		~ShaderProgram();
+
+		void setMatrixUniform(const std::string & name, const Matrix & matrix);
 
 		void bind() const;
 	private:

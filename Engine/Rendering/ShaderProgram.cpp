@@ -17,6 +17,8 @@
 
 #include "Shader.hpp"
 
+#include "../Math/Matrix.hpp"
+
 #include <GL/glew.h>
 
 namespace Miruela
@@ -53,6 +55,12 @@ namespace Miruela
 	ShaderProgram::~ShaderProgram()
 	{
 		glDeleteProgram(shaderProgram);
+	}
+
+
+	void ShaderProgram::setMatrixUniform(const std::string & name, const Matrix & matrix)
+	{
+		glUniformMatrix4fv(getUniformLocation(name), 1, GL_FALSE, &matrix.value[0][0]);
 	}
 
 	

@@ -13,29 +13,45 @@
 	Also add information on how to contact you by electronic and paper mail.
 */
 
-#pragma once
+#include "Matrix.hpp"
 
-#include <string>
-#include <deque>
+#include <sstream>
+
+#include "Vector3.hpp"
 
 namespace Miruela
 {
-	class Renderable;
-	class ShaderProgram;
-	class Mesh;
-	class Renderer
+	Matrix::Matrix()
 	{
-	public:
-		Renderer(const std::string & vsPath, const std::string & fsPath);
-		~Renderer();
+		identity();
+	}
 
-		void submit(Renderable * mesh);
-	private:
-		void render();
-	private:
-		ShaderProgram * shaderProgram;
-		std::deque<Renderable*> renderables;
 
-		friend class Game;
-	};
+	void Matrix::identity()
+	{
+		memset(&value, 0, sizeof(float) * 16);
+		value[0][0] = 1.0f;
+		value[1][1] = 1.0f;
+		value[2][2] = 1.0f;
+		value[3][3] = 1.0f;
+	}
+
+
+	void Matrix::scale(const Vector3 & translation)
+	{
+		for (auto & column : value)
+		{
+			column[0] *= translation.x;
+			column[1] *= translation.y;
+			column[2] *= translation.z;
+		}
+	}
+
+
+	void Matrix::translate(const Vector3 & translation)
+	{
+		value[3][0] = translation.x;
+		value[3][1] = translation.y;
+		value[3][2] = translation.z;
+	}
 }

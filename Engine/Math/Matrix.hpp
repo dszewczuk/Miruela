@@ -15,27 +15,19 @@
 
 #pragma once
 
-#include <string>
-#include <deque>
+#include <array>
 
 namespace Miruela
 {
-	class Renderable;
-	class ShaderProgram;
-	class Mesh;
-	class Renderer
+	struct Vector3;
+	struct Matrix
 	{
-	public:
-		Renderer(const std::string & vsPath, const std::string & fsPath);
-		~Renderer();
+		std::array<std::array<float, 4>, 4> value;
 
-		void submit(Renderable * mesh);
-	private:
-		void render();
-	private:
-		ShaderProgram * shaderProgram;
-		std::deque<Renderable*> renderables;
+		Matrix();
 
-		friend class Game;
+		void identity();
+		void scale(const Vector3 & translation);
+		void translate(const Vector3 & translation);
 	};
 }

@@ -17,6 +17,8 @@
 
 #include "Renderable.hpp"
 
+#include "../Math/Matrix.hpp"
+
 namespace Miruela
 {
 	class Mesh;
@@ -28,9 +30,10 @@ namespace Miruela
 		Sprite(Texture * texture);
 		~Sprite();
 
-		void render() override;
+		void render(ShaderProgram * shaderProgram) override;
 	private:
 		Mesh * mesh;
 		Texture * texture;
+		Matrix mat; //temporary here, just put here to test matrices
 	};
 }

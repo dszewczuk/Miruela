@@ -15,27 +15,32 @@
 
 #pragma once
 
-#include <string>
-#include <deque>
-
 namespace Miruela
 {
-	class Renderable;
-	class ShaderProgram;
-	class Mesh;
-	class Renderer
+	struct Vector4
 	{
-	public:
-		Renderer(const std::string & vsPath, const std::string & fsPath);
-		~Renderer();
+		float x, y, z, w;
 
-		void submit(Renderable * mesh);
-	private:
-		void render();
-	private:
-		ShaderProgram * shaderProgram;
-		std::deque<Renderable*> renderables;
+		Vector4(void);
+		Vector4(const float & value);
+		Vector4(const float & x, const float & y, const float & z, const float & w);
 
-		friend class Game;
+		void normalizeSelf();
+		Vector4 normalize();
+
+		float length();
+
+		Vector4 operator+(const Vector4 & other);
+		Vector4 operator-(const Vector4 & other);
+		Vector4 operator*(const Vector4 & other);
+		Vector4 operator/(const Vector4 & other);
+
+		void operator+=(const Vector4 & other);
+		void operator-=(const Vector4 & other);
+		void operator*=(const Vector4 & other);
+		void operator/=(const Vector4 & other);
+
+		bool operator==(const Vector4 & other);
+		bool operator!=(const Vector4 & other);
 	};
 }

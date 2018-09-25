@@ -57,7 +57,7 @@ namespace Miruela
 		while(!renderables.empty())
 		{
 			auto renderable = renderables.front(); renderables.pop_front();
-			renderable->render();
+			renderable->render(shaderProgram);
 			glDrawElements(GL_TRIANGLES, renderable->getIndicesCount(), GL_UNSIGNED_INT, nullptr);
 		}
 	}

@@ -17,12 +17,13 @@
 
 namespace Miruela
 {
+	class ShaderProgram;
 	class Renderable
 	{
 	public:
 		Renderable(const unsigned int & indicesCount);
 
-		virtual void render() = 0;
+		virtual void render(ShaderProgram * shaderProgram) = 0;
 
 		unsigned int getIndicesCount() const;
 	private:

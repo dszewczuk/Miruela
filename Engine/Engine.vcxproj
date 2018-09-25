@@ -21,8 +21,10 @@
   <ItemGroup>
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Math\Matrix.cpp" />
     <ClCompile Include="Math\Vector2.cpp" />
     <ClCompile Include="Math\Vector3.cpp" />
+    <ClCompile Include="Math\Vector4.cpp" />
     <ClCompile Include="Rendering\Buffer.cpp" />
     <ClCompile Include="Rendering\Mesh.cpp" />
     <ClCompile Include="Rendering\Renderable.cpp" />
@@ -38,8 +40,10 @@
   <ItemGroup>
     <ClInclude Include="Game.hpp" />
     <ClInclude Include="GameState.hpp" />
+    <ClInclude Include="Math\Matrix.hpp" />
     <ClInclude Include="Math\Vector2.hpp" />
     <ClInclude Include="Math\Vector3.hpp" />
+    <ClInclude Include="Math\Vector4.hpp" />
     <ClInclude Include="Rendering\Buffer.hpp" />
     <ClInclude Include="Rendering\Mesh.hpp" />
     <ClInclude Include="Rendering\Renderable.hpp" />

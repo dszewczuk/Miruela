@@ -19,6 +19,7 @@ namespace Miruela
 {
 	class Game;
 	class EventManager;
+	class ShaderProgram;
 
 	class GameState
 	{

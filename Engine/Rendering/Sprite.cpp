@@ -17,9 +17,11 @@
 
 #include "Texture.hpp"
 #include "Mesh.hpp"
+#include "ShaderProgram.hpp"
 
 #include "../Math/Vector2.hpp"
 #include "../Math/Vector3.hpp"
+#include "../Math/Matrix.hpp"
 
 #include <vector>
 
@@ -51,6 +53,9 @@ namespace Miruela
 		};
 
 		mesh = new Mesh(vertices, uvs, indices);
+
+		mat.translate(Vector3(0.0, 0.5, 0)); //temporary here, just put here to test matrices
+		mat.scale(Vector3(0.5)); //temporary here, just put here to test matrices
 	}
 
 
@@ -60,9 +65,10 @@ namespace Miruela
 	}
 
 
-	void Sprite::render()
+	void Sprite::render(ShaderProgram * shaderProgram)
 	{
 		texture->bind();
+		shaderProgram->setMatrixUniform("trans", mat); //temporary here, just put here to test matrices
 		mesh->bind();
 	}
 }

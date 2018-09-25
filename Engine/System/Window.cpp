@@ -23,7 +23,7 @@ namespace Miruela
 {
 	Window::Window(const int & width, const int & height)
 	{
-		window = SDL_CreateWindow("Engine", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, SDL_WINDOW_OPENGL);
+		window = SDL_CreateWindow("Engine", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, width, height, SDL_WINDOW_OPENGL);
 		context = SDL_GL_CreateContext(window);
 
 		glewExperimental = GL_TRUE;

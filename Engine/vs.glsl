@@ -5,8 +5,10 @@ layout(location = 1) in vec2 uvCoord;
 
 out vec2 fragmentUvCoord;
 
+uniform mat4 trans;
+
 void main()
 {
-	gl_Position = vec4(vertexPosition, 1.0);
+	gl_Position = trans * vec4(vertexPosition, 1.0);
 	fragmentUvCoord = uvCoord;
 }

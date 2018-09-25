@@ -19,6 +19,10 @@
 #include "Rendering/Texture.hpp"
 #include "Rendering/Sprite.hpp"
 #include "Rendering/Renderer.hpp"
+#include "Rendering/ShaderProgram.hpp"
+
+#include "Math/Vector3.hpp"
+#include "Math/Matrix.hpp"
 
 #include "System/EventManager.hpp"
 
@@ -33,6 +37,12 @@ public:
 		sprite = new Miruela::Sprite(texture);
 	}
 
+	~MainGameState()
+	{
+		delete texture;
+		delete sprite;
+	}
+
 	void draw() override
 	{
 		getGame()->getRenderer()->submit(sprite);
@@ -42,7 +52,7 @@ public:
 	{
 	}
 
-	void handleEvent(Miruela::EventManager * eventManager)
+	void handleEvent(Miruela::EventManager * eventManager) override
 	{
 	}
 private:
