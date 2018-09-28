@@ -13,26 +13,44 @@
 	Also add information on how to contact you by electronic and paper mail.
 */
 
-#pragma once
-
-#include "Renderable.hpp"
+#include "Transformable.hpp"
 
 namespace Miruela
 {
-	class Mesh;
-	class Texture;
-	class Transformable;
-
-	class Sprite : public Renderable
+	Transformable::Transformable(const Vector3 & position, const Vector3 & scale)
+		:position(position), scale(scale)
 	{
-	public:
-		Sprite(Texture * texture);
-		~Sprite();
+	}
 
-		void render(ShaderProgram * shaderProgram) override;
-	private:
-		Mesh * mesh;
-		Texture * texture;
-		Transformable * transformable;
-	};
+
+	Matrix Transformable::getMatrix()
+	{
+		matrix = matrix.translate(matrix, position);
+		matrix = matrix.scale(matrix, scale);
+		return matrix;
+	}
+
+
+	Vector3 Transformable::getPosition() const
+	{
+		return position;
+	}
+
+
+	void Transformable::setPosition(const Vector3 & position)
+	{
+		this->position = position;
+	}
+
+
+	Vector3 Transformable::getScale() const
+	{
+		return scale;
+	}
+
+
+	void Transformable::setScale(const Vector3 & scale)
+	{
+		this->scale = scale;
+	}
 }

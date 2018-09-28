@@ -33,6 +33,7 @@
     <ClCompile Include="Rendering\ShaderProgram.cpp" />
     <ClCompile Include="Rendering\Sprite.cpp" />
     <ClCompile Include="Rendering\Texture.cpp" />
+    <ClCompile Include="Rendering\Transformable.cpp" />
     <ClCompile Include="Rendering\VertexArray.cpp" />
     <ClCompile Include="System\EventManager.cpp" />
     <ClCompile Include="System\Window.cpp" />
@@ -52,6 +53,7 @@
     <ClInclude Include="Rendering\ShaderProgram.hpp" />
     <ClInclude Include="Rendering\Sprite.hpp" />
     <ClInclude Include="Rendering\Texture.hpp" />
+    <ClInclude Include="Rendering\Transformable.hpp" />
     <ClInclude Include="Rendering\VertexArray.hpp" />
     <ClInclude Include="System\EventManager.hpp" />
     <ClInclude Include="System\Window.hpp" />

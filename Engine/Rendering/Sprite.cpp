@@ -18,6 +18,7 @@
 #include "Texture.hpp"
 #include "Mesh.hpp"
 #include "ShaderProgram.hpp"
+#include "Transformable.hpp"
 
 #include "../Math/Vector2.hpp"
 #include "../Math/Vector3.hpp"
@@ -53,6 +54,8 @@ namespace Miruela
 		};
 
 		mesh = new Mesh(vertices, uvs, indices);
+
+		transformable = new Transformable(Vector3(0.0f, 0.5f, 0.0f), Vector3(0.5f));
 	}
 
 
@@ -65,11 +68,8 @@ namespace Miruela
 	void Sprite::render(ShaderProgram * shaderProgram)
 	{
 		texture->bind();
-
-		Matrix trans;
-		trans = trans.translate(trans, Vector3(0.0f, 0.5f, 0.0f));
-		trans = trans.scale(trans, Vector3(0.5f));
-		shaderProgram->setMatrixUniform("trans", trans); //temporary here, just put here to test matrices
+		
+		shaderProgram->setMatrixUniform("trans", transformable->getMatrix()); //temporary here, just put here to test matrices
 
 		mesh->bind();
 	}

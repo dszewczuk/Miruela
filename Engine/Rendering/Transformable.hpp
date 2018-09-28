@@ -15,24 +15,27 @@
 
 #pragma once
 
-#include "Renderable.hpp"
+#include "../Math/Vector3.hpp"
+
+#include "../Math/Matrix.hpp"
 
 namespace Miruela
 {
-	class Mesh;
-	class Texture;
-	class Transformable;
-
-	class Sprite : public Renderable
+	class Transformable
 	{
 	public:
-		Sprite(Texture * texture);
-		~Sprite();
+		Transformable(const Vector3 & position=Vector3(0.0f), const Vector3 & scale=Vector3(1.0f));
 
-		void render(ShaderProgram * shaderProgram) override;
+		Matrix getMatrix();
+
+		Vector3 getPosition() const;
+		void setPosition(const Vector3 & position);
+
+		Vector3 getScale() const;
+		void setScale(const Vector3 & scale);
 	private:
-		Mesh * mesh;
-		Texture * texture;
-		Transformable * transformable;
+		Vector3 position;
+		Vector3 scale;
+		Matrix matrix;
 	};
 }
