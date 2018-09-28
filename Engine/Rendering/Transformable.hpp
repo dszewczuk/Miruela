@@ -31,6 +31,8 @@ namespace Miruela
 		Vector3 getPosition() const;
 		void setPosition(const Vector3 & position);
 
+		void move(const Vector3 & relative);
+
 		Vector3 getScale() const;
 		void setScale(const Vector3 & scale);
 	private:

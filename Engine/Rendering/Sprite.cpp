@@ -67,6 +67,8 @@ namespace Miruela
 
 	void Sprite::render(ShaderProgram * shaderProgram)
 	{
+		transformable->move(Vector3(0.00005f, 0.0f, 0.0f));
+
 		texture->bind();
 		
 		shaderProgram->setMatrixUniform("trans", transformable->getMatrix()); //temporary here, just put here to test matrices

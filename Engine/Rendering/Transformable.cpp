@@ -43,6 +43,12 @@ namespace Miruela
 	}
 
 
+	void Transformable::move(const Vector3 & relative)
+	{
+		position += relative;
+	}
+
+
 	Vector3 Transformable::getScale() const
 	{
 		return scale;
