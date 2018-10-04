@@ -63,4 +63,20 @@ namespace Miruela
 		m.value[3][3] = 1.0f;
 		return m;
 	}
+
+
+	Matrix Matrix::orthographic(const float & left, const float & right, const float & top, const float & bottom, const float & near, const float & far)
+	{
+		Matrix m;
+		m.value[0][0] = 2 / (right - left);
+		m.value[1][1] = 2 / (top - bottom);
+		m.value[2][2] = -2 / (far - near);
+
+		m.value[3][0] = -(right + left) / (right - left);
+		m.value[3][1] = -(top + bottom) / (top - bottom);
+		m.value[3][2] = -(far + near) / (far - near);
+		m.value[3][3] = 1;
+
+		return m;
+	}
 }

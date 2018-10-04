@@ -13,34 +13,9 @@
 	Also add information on how to contact you by electronic and paper mail.
 */
 
-#pragma once
+#include "Camera.hpp"
 
 namespace Miruela
 {
-	struct Vector2
-	{
-		float x, y;
-
-		Vector2(void);
-		Vector2(const float & value);
-		Vector2(const float & x, const float & y);
-
-		void normalizeSelf();
-		Vector2 normalize() const;
-
-		float length() const;
-
-		Vector2 operator+(const Vector2 & other);
-		Vector2 operator-(const Vector2 & other);
-		Vector2 operator*(const Vector2 & other);
-		Vector2 operator/(const Vector2 & other);
-
-		void operator+=(const Vector2 & other);
-		void operator-=(const Vector2 & other);
-		void operator*=(const Vector2 & other);
-		void operator/=(const Vector2 & other);
-
-		bool operator==(const Vector2 & other);
-		bool operator!=(const Vector2 & other);
-	};
+	
 }

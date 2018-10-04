@@ -30,5 +30,7 @@ namespace Miruela
 		static Matrix identity();
 		static Matrix scale(const Matrix & matrix, const Vector3 & scaling);
 		static Matrix translate(const Matrix & matrix, const Vector3 & translation);
+
+		static Matrix orthographic(const float & left, const float & right, const float & top, const float & bottom, const float & near, const float & far);
 	};
 }

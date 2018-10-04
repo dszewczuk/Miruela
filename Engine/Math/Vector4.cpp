@@ -49,7 +49,7 @@ namespace Miruela
 	}
 
 
-	Vector4 Vector4::normalize()
+	Vector4 Vector4::normalize() const
 	{
 		if (length() > 0)
 			return Vector4(x / length(), y / length(), z / length(), w / length());
@@ -57,7 +57,7 @@ namespace Miruela
 	}
 
 
-	float Vector4::length()
+	float Vector4::length() const
 	{
 		return sqrt(pow(x, 2) + pow(y, 2) + pow(z, 2) + pow(w, 2));
 	}

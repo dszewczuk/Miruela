@@ -38,6 +38,5 @@ namespace Miruela
 	private:
 		Vector3 position;
 		Vector3 scale;
-		Matrix matrix;
 	};
 }

@@ -25,6 +25,7 @@ namespace Miruela
 
 	Matrix Transformable::getMatrix()
 	{
+		Matrix matrix;
 		matrix = matrix.translate(matrix, position);
 		matrix = matrix.scale(matrix, scale);
 		return matrix;

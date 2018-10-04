@@ -26,9 +26,11 @@ namespace Miruela
 		Vector3(const float & x, const float & y, const float & z);
 
 		void normalizeSelf();
-		Vector3 normalize();
+		Vector3 normalize() const;
 
-		float length();
+		float length() const;
+
+		Vector3 cross(const Vector3 & other) const;
 
 		Vector3 operator+(const Vector3 & other);
 		Vector3 operator-(const Vector3 & other);

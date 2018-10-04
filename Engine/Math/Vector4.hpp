@@ -26,9 +26,9 @@ namespace Miruela
 		Vector4(const float & x, const float & y, const float & z, const float & w);
 
 		void normalizeSelf();
-		Vector4 normalize();
+		Vector4 normalize() const;
 
-		float length();
+		float length() const;
 
 		Vector4 operator+(const Vector4 & other);
 		Vector4 operator-(const Vector4 & other);

@@ -48,7 +48,7 @@ namespace Miruela
 	}
 
 
-	Vector3 Vector3::normalize()
+	Vector3 Vector3::normalize() const
 	{
 		if (length() > 0)
 			return Vector3(x / length(), y / length(), z / length());
@@ -56,11 +56,16 @@ namespace Miruela
 	}
 
 
-	float Vector3::length()
+	float Vector3::length() const
 	{
 		return sqrt(pow(x, 2) + pow(y, 2) + pow(z, 2));
 	}
 
+
+	Vector3 Vector3::cross(const Vector3 & other) const
+	{
+		return Vector3(y * other.z - z * other.y, z * other.x - x * other.z, x * other.y - y * other.x);
+	}
 
 	Vector3 Vector3::operator+(const Vector3 & other)
 	{

@@ -26,6 +26,7 @@
     <ClCompile Include="Math\Vector3.cpp" />
     <ClCompile Include="Math\Vector4.cpp" />
     <ClCompile Include="Rendering\Buffer.cpp" />
+    <ClCompile Include="Rendering\Camera.cpp" />
     <ClCompile Include="Rendering\Mesh.cpp" />
     <ClCompile Include="Rendering\Renderable.cpp" />
     <ClCompile Include="Rendering\Renderer.cpp" />
@@ -46,6 +47,7 @@
     <ClInclude Include="Math\Vector3.hpp" />
     <ClInclude Include="Math\Vector4.hpp" />
     <ClInclude Include="Rendering\Buffer.hpp" />
+    <ClInclude Include="Rendering\Camera.hpp" />
     <ClInclude Include="Rendering\Mesh.hpp" />
     <ClInclude Include="Rendering\Renderable.hpp" />
     <ClInclude Include="Rendering\Renderer.hpp" />

@@ -47,7 +47,7 @@ namespace Miruela
 	}
 
 
-	Vector2 Vector2::normalize()
+	Vector2 Vector2::normalize() const
 	{
 		if (length() > 0)
 			return Vector2(x / length(), y / length());
@@ -55,7 +55,7 @@ namespace Miruela
 	}
 
 
-	float Vector2::length()
+	float Vector2::length() const
 	{
 		return sqrt(pow(x, 2) + pow(y, 2));
 	}
