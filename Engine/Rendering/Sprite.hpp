@@ -17,22 +17,24 @@
 
 #include "Renderable.hpp"
 
+#include "Transformable.hpp"
+
+#include "../Math/Vector2.hpp"
+
 namespace Miruela
 {
 	class Mesh;
 	class Texture;
-	class Transformable;
 
-	class Sprite : public Renderable
+	class Sprite : public Renderable, public Transformable
 	{
 	public:
-		Sprite(Texture * texture);
+		Sprite(Texture * texture, const Vector2 & position, const Vector2 & size);
 		~Sprite();
 
 		void render(ShaderProgram * shaderProgram) override;
 	private:
 		Mesh * mesh;
 		Texture * texture;
-		Transformable * transformable;
 	};
 }

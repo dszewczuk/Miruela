@@ -21,7 +21,7 @@
 #include "Mesh.hpp"
 #include "Renderable.hpp"
 
-#include <gtc/matrix_transform.hpp>
+#include "../System/Window.hpp"
 
 #include <GL/glew.h>
 
@@ -53,10 +53,10 @@ namespace Miruela
 	}
 
 
-	void Renderer::render()
+	void Renderer::render(const Window * window)
 	{
 		shaderProgram->bind();
-		shaderProgram->setMatrixUniform("projection", Matrix::orthographic(0, 800, 0, 600, -1.0f, 1.0f));
+		shaderProgram->setMatrixUniform("projection", Matrix::orthographic(0, window->getSize().x, 0, window->getSize().y, -1.0f, 1.0f));
 		while(!renderables.empty())
 		{
 			auto renderable = renderables.front(); renderables.pop_front();

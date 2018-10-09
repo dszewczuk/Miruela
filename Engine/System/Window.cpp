@@ -21,9 +21,10 @@
 
 namespace Miruela
 {
-	Window::Window(const int & width, const int & height)
+	Window::Window(const Miruela::Vector2 & size)
+		:size(size)
 	{
-		window = SDL_CreateWindow("Engine", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, width, height, SDL_WINDOW_OPENGL);
+		window = SDL_CreateWindow("Engine", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, size.x, size.y, SDL_WINDOW_OPENGL);
 		context = SDL_GL_CreateContext(window);
 
 		glewExperimental = GL_TRUE;
@@ -35,6 +36,12 @@ namespace Miruela
 	{
 		SDL_GL_DeleteContext(context);
 		SDL_DestroyWindow(window);
+	}
+
+
+	Miruela::Vector2 Window::getSize() const
+	{
+		return size;
 	}
 
 

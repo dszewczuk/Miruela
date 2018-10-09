@@ -26,7 +26,7 @@ namespace Miruela
 {
 	Game::Game(const int & width, const int & height)
 	{
-		window = new Window(width, height);
+		window = new Window(Vector2(width, height));
 		renderer = new Renderer("vs.glsl", "fs.glsl");
 	}
 
@@ -53,7 +53,7 @@ namespace Miruela
 			window->clear(0.2, 0.2, 0.2, 0.0);
 
 			gameState->draw();
-			renderer->render();
+			renderer->render(window);
 
 			window->render();
 		}

@@ -17,18 +17,24 @@
 
 #include <SDL.h> //gotta delete this soon :(
 
+#include "../Math/Vector2.hpp"
+
 namespace Miruela
 {
 	class Window
 	{
 	public:
-		Window(const int & width, const int & height);
+		Window(const Miruela::Vector2 & size);
 		~Window();
 		
+		Miruela::Vector2 getSize() const;
+
 		void clear(const float & r, const float & g, const float & b, const float & a) const;
 		void render() const;
 	private:
 		SDL_Window * window;
 		SDL_GLContext context;
+
+		Miruela::Vector2 size;
 	};
 }

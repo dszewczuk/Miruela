@@ -34,7 +34,7 @@ public:
 	MainGameState()
 	{
 		texture = new Miruela::Texture("texture.png");
-		sprite = new Miruela::Sprite(texture);
+		sprite = new Miruela::Sprite(texture, Miruela::Vector2(0, 0), Miruela::Vector2(64, 64));
 	}
 
 	~MainGameState()
@@ -50,11 +50,13 @@ public:
 
 	void update(const float & deltaTime) override
 	{
+		sprite->move(Miruela::Vector3(deltaTime / 10, deltaTime / 20, 0));
 	}
 
 	void handleEvent(Miruela::EventManager * eventManager) override
 	{
 	}
+
 private:
 	Miruela::Texture * texture;
 	Miruela::Sprite * sprite;

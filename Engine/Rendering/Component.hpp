@@ -15,29 +15,20 @@
 
 #pragma once
 
-#include <string>
-#include <deque>
-
 namespace Miruela
 {
-	class Renderable;
-	class ShaderProgram;
-	class Mesh;
-	class Window;
-
-	class Renderer
+	class Entity;
+	class Component
 	{
 	public:
-		Renderer(const std::string & vsPath, const std::string & fsPath);
-		~Renderer();
+		Component(Entity * entity)
+			:entity(entity)
+		{
+		}
 
-		void submit(Renderable * mesh);
+		virtual void update(const float & deltaTime) = 0;
+		virtual void render() = 0;
 	private:
-		void render(const Window * window);
-	private:
-		ShaderProgram * shaderProgram;
-		std::deque<Renderable*> renderables;
-
-		friend class Game;
+		Entity * entity;
 	};
 }

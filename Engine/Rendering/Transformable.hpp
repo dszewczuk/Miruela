@@ -24,17 +24,17 @@ namespace Miruela
 	class Transformable
 	{
 	public:
-		Transformable(const Vector3 & position=Vector3(0.0f), const Vector3 & scale=Vector3(1.0f));
+		Transformable(const Vector3 & position=Vector3(0.0f), const Vector3 & scale=Vector3(0.5f));
 
 		Matrix getMatrix();
 
 		Vector3 getPosition() const;
 		void setPosition(const Vector3 & position);
 
-		void move(const Vector3 & relative);
-
 		Vector3 getScale() const;
 		void setScale(const Vector3 & scale);
+
+		void move(const Vector3 & relative);
 	private:
 		Vector3 position;
 		Vector3 scale;

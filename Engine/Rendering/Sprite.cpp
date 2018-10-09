@@ -26,19 +26,17 @@
 
 #include <vector>
 
-#include <gtc/matrix_transform.hpp>
-
 namespace Miruela
 {
-	Sprite::Sprite(Texture * texture)
-		:Renderable(6), texture(texture)
+	Sprite::Sprite(Texture * texture, const Vector2 & position, const Vector2 & size)
+		:Renderable(6), texture(texture), Transformable(Vector3(position.x, position.y, 0), Vector3(size.x, size.y, 0))
 	{
 		std::vector<Miruela::Vector3> vertices =
 		{
-			{ -1.0f, 1.0f, 0.0f },
-			{ 1.0f, 1.0f, 0.0f },
-			{ -1.0f, -1.0f, 0.0f },
-			{ 1.0f, -1.0f, 0.0f }
+			{ -0.5f, 0.5f, 0.0f },
+			{ 0.5f, 0.5f, 0.0f },
+			{ -0.5f, -0.5f, 0.0f },
+			{ 0.5f, -0.5f, 0.0f }
 		};
 
 		std::vector<Miruela::Vector2> uvs =
@@ -56,8 +54,6 @@ namespace Miruela
 		};
 
 		mesh = new Mesh(vertices, uvs, indices);
-
-		transformable = new Transformable(Vector3(0), Vector3(64));
 	}
 
 
@@ -71,7 +67,7 @@ namespace Miruela
 	{
 		texture->bind();
 		
-		shaderProgram->setMatrixUniform("transformation", transformable->getMatrix()); //temporary here, just put here to test matrices
+		shaderProgram->setMatrixUniform("transformation", getMatrix()); //temporary here, just put here to test matrices
 
 		mesh->bind();
 	}
