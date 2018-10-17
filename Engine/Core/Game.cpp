@@ -17,10 +17,10 @@
 
 #include "GameState.hpp"
 
-#include "System/Window.hpp"
-#include "System/EventManager.hpp"
+#include "../System/Window.hpp"
+#include "../System/EventManager.hpp"
 
-#include "Rendering/Renderer.hpp"
+#include "../Rendering/Renderer.hpp"
 
 namespace Miruela
 {

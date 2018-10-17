@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Game.cpp" />
+    <ClCompile Include="Core\Game.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Math\Matrix.cpp" />
     <ClCompile Include="Math\Vector2.cpp" />
@@ -40,8 +40,9 @@
     <ClCompile Include="System\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Game.hpp" />
-    <ClInclude Include="GameState.hpp" />
+    <ClInclude Include="Core\Game.hpp" />
+    <ClInclude Include="Core\GameState.hpp" />
+    <ClInclude Include="Core\ResourceManager.hpp" />
     <ClInclude Include="Math\Matrix.hpp" />
     <ClInclude Include="Math\Vector2.hpp" />
     <ClInclude Include="Math\Vector3.hpp" />
@@ -58,7 +59,6 @@
     <ClInclude Include="Rendering\Texture.hpp" />
     <ClInclude Include="Rendering\Transformable.hpp" />
     <ClInclude Include="Rendering\VertexArray.hpp" />
-    <ClInclude Include="ResourceManager.hpp" />
     <ClInclude Include="System\EventManager.hpp" />
     <ClInclude Include="System\Window.hpp" />
   </ItemGroup>

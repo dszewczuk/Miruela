@@ -13,8 +13,8 @@
 	Also add information on how to contact you by electronic and paper mail.
 */
 
-#include "Game.hpp"
-#include "GameState.hpp"
+#include "Core/Game.hpp"
+#include "Core/GameState.hpp"
 
 #include "Rendering/Texture.hpp"
 #include "Rendering/Sprite.hpp"
