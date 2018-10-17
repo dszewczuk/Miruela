@@ -15,15 +15,27 @@
 
 #pragma once
 
+#include "ResourceManager.hpp"
+
 namespace Miruela
 {
 	class Game;
 	class EventManager;
 	class ShaderProgram;
-
+	
 	class GameState
 	{
 	public:
+		GameState()
+		{
+			resourceManager = new ResourceManager();
+		}
+
+		~GameState()
+		{
+			delete resourceManager;
+		}
+
 		virtual void update(const float & deltaTime) = 0;
 		virtual void handleEvent(EventManager * eventManager) = 0;
 		virtual void draw() = 0;
@@ -32,8 +44,15 @@ namespace Miruela
 		{
 			return game;
 		}
+
+		ResourceManager * getResourceManager() const
+		{
+			return resourceManager;
+		}
+
 	private:
 		Game * game;
+		ResourceManager * resourceManager;
 		friend class Game;
 	};
 }

@@ -33,13 +33,12 @@ class MainGameState : public Miruela::GameState
 public:
 	MainGameState()
 	{
-		texture = new Miruela::Texture("texture.png");
-		sprite = new Miruela::Sprite(texture, Miruela::Vector2(0, 0), Miruela::Vector2(64, 64));
+		getResourceManager()->load<Miruela::Texture>("texture", "texture.png");
+		sprite = new Miruela::Sprite(getResourceManager()->get<Miruela::Texture>("texture"), Miruela::Vector2(0, 0), Miruela::Vector2(64, 64));
 	}
 
 	~MainGameState()
 	{
-		delete texture;
 		delete sprite;
 	}
 
@@ -58,7 +57,6 @@ public:
 	}
 
 private:
-	Miruela::Texture * texture;
 	Miruela::Sprite * sprite;
 };
 

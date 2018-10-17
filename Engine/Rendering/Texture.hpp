@@ -17,15 +17,17 @@
 
 #include <string>
 
+#include "Resource.hpp"
+
 namespace Miruela
 {
-	class Texture
+	class Texture : public Resource
 	{
 	public:
 		Texture(const std::string & filePath);
 		~Texture();
 
-		void bind() const;
+		void bind() const override;
 	private:
 		unsigned int texture;
 	};
