@@ -17,8 +17,8 @@
 
 namespace Miruela
 {
-	Transformable::Transformable(const Vector3 & position, const Vector3 & scale)
-		:position(position), scale(scale)
+	Transformable::Transformable(Entity * entity, const Vector3 & position, const Vector3 & scale)
+		:Component(entity), position(position), scale(scale)
 	{
 	}
 

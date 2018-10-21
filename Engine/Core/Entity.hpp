@@ -13,22 +13,30 @@
 	Also add information on how to contact you by electronic and paper mail.
 */
 
-#pragma once
+#include <unordered_map>
+#include <typeinfo>
+#include <string>
+
+#include "Component.hpp"
 
 namespace Miruela
 {
-	class Entity;
-	class Component
+	class Entity
 	{
 	public:
-		Component(Entity * entity)
-			:entity(entity)
+		template<class T1, class T2, class ... Types>
+		void appendComponent(Types && ... args)
 		{
+			components[typeid(T1).name()] = new T2(this, args...);
 		}
 
-		virtual void update(const float & deltaTime) = 0;
-		virtual void render() = 0;
+		template<class T>
+		T* getComponent()
+		{
+			return dynamic_cast<T*>(components[typeid(T).name()]);
+		}
+
 	private:
-		Entity * entity;
+		std::unordered_map<std::string, Component*> components;
 	};
 }

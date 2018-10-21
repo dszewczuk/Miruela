@@ -19,12 +19,14 @@
 
 #include "../Math/Matrix.hpp"
 
+#include "../Core/Component.hpp"
+
 namespace Miruela
 {
-	class Transformable
+	class Transformable : public Component
 	{
 	public:
-		Transformable(const Vector3 & position=Vector3(0.0f), const Vector3 & scale=Vector3(0.5f));
+		Transformable(Entity * entity, const Vector3 & position=Vector3(0.0f), const Vector3 & scale=Vector3(0.5f));
 
 		Matrix getMatrix();
 
@@ -35,6 +37,9 @@ namespace Miruela
 		void setScale(const Vector3 & scale);
 
 		void move(const Vector3 & relative);
+
+		void update(const float & deltaTime) override {};
+		void render() override {};
 	private:
 		Vector3 position;
 		Vector3 scale;

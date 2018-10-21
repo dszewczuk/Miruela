@@ -26,13 +26,14 @@ namespace Miruela
 	class Mesh;
 	class Texture;
 
-	class Sprite : public Renderable, public Transformable
+	class Sprite : public Renderable
 	{
 	public:
-		Sprite(Texture * texture, const Vector2 & position, const Vector2 & size);
+		Sprite(Entity * entity, Texture * texture, ShaderProgram * shaderProgram);
 		~Sprite();
 
-		void render(ShaderProgram * shaderProgram) override;
+		void render() override;
+		void update(const float & deltaTime) override {};
 	private:
 		Mesh * mesh;
 		Texture * texture;

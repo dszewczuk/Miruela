@@ -28,8 +28,8 @@
 
 namespace Miruela
 {
-	Sprite::Sprite(Texture * texture, const Vector2 & position, const Vector2 & size)
-		:Renderable(6), texture(texture), Transformable(Vector3(position.x, position.y, 0), Vector3(size.x, size.y, 0))
+	Sprite::Sprite(Entity * entity, Texture * texture, ShaderProgram * shaderProgram)
+		:Renderable(entity, shaderProgram, 6), texture(texture)
 	{
 		std::vector<Miruela::Vector3> vertices =
 		{
@@ -63,12 +63,10 @@ namespace Miruela
 	}
 
 
-	void Sprite::render(ShaderProgram * shaderProgram)
+	void Sprite::render()
 	{
 		texture->bind();
 		
-		shaderProgram->setMatrixUniform("transformation", getMatrix()); //temporary here, just put here to test matrices
-
 		mesh->bind();
 	}
 }

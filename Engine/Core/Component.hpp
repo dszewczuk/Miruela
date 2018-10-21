@@ -13,18 +13,21 @@
 	Also add information on how to contact you by electronic and paper mail.
 */
 
-#include "Renderable.hpp"
+#pragma once
 
 namespace Miruela
 {
-	Renderable::Renderable(Entity * entity, ShaderProgram * shaderProgram, const unsigned int & indicesCount)
-		:Component(entity), indicesCount(indicesCount), shaderProgram(shaderProgram)
+	class Entity;
+	class Component
 	{
-	}
+	public:
+		Component(Entity * entity)
+			:entity(entity)
+		{}
 
-
-	unsigned int Miruela::Renderable::getIndicesCount() const
-	{
-		return indicesCount;
-	}
+		virtual void update(const float & deltaTime) = 0;
+		virtual void render() = 0;
+	private:
+		Entity * entity;
+	};
 }

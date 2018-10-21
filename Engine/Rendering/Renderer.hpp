@@ -18,8 +18,11 @@
 #include <string>
 #include <deque>
 
+#include "../Core/Entity.hpp"
+
 namespace Miruela
 {
+	class Transformable;
 	class Renderable;
 	class ShaderProgram;
 	class Mesh;
@@ -31,12 +34,14 @@ namespace Miruela
 		Renderer(const std::string & vsPath, const std::string & fsPath);
 		~Renderer();
 
-		void submit(Renderable * mesh);
+		ShaderProgram * getShaderProgram();
+
+		void submit(Entity * entity);
 	private:
 		void render(const Window * window);
 	private:
 		ShaderProgram * shaderProgram;
-		std::deque<Renderable*> renderables;
+		std::deque<std::pair<Transformable*, Renderable*>> renderables;
 
 		friend class Game;
 	};

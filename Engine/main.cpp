@@ -31,25 +31,30 @@
 class MainGameState : public Miruela::GameState
 {
 public:
-	MainGameState()
+	MainGameState(Miruela::Game * game)
+		:GameState(game)
 	{
 		getResourceManager()->load<Miruela::Texture>("texture", "texture.png");
-		sprite = new Miruela::Sprite(getResourceManager()->get<Miruela::Texture>("texture"), Miruela::Vector2(0, 0), Miruela::Vector2(64, 64));
+
+		player = new Miruela::Entity;
+
+		player->appendComponent<Miruela::Transformable, Miruela::Transformable>(Miruela::Vector3(0, 0, 0), Miruela::Vector3(64, 64, 0));
+		player->appendComponent<Miruela::Renderable, Miruela::Sprite>(getResourceManager()->get<Miruela::Texture>("texture"), getGame()->getRenderer()->getShaderProgram());
 	}
 
 	~MainGameState()
 	{
-		delete sprite;
+		delete player;
 	}
 
-	void draw() override
+	void render() override
 	{
-		getGame()->getRenderer()->submit(sprite);
+		getGame()->getRenderer()->submit(player);
 	}
 
 	void update(const float & deltaTime) override
 	{
-		sprite->move(Miruela::Vector3(deltaTime / 10, deltaTime / 20, 0));
+		
 	}
 
 	void handleEvent(Miruela::EventManager * eventManager) override
@@ -57,13 +62,13 @@ public:
 	}
 
 private:
-	Miruela::Sprite * sprite;
+	Miruela::Entity * player;
 };
 
 int main()
 {
 	Miruela::Game game(800, 600);
-	MainGameState state;
+	MainGameState state(&game);
 	game.setGameState(&state);
 	game.run();
 

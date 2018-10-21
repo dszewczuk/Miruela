@@ -52,7 +52,7 @@ namespace Miruela
 
 			window->clear(0.2, 0.2, 0.2, 0.0);
 
-			gameState->draw();
+			gameState->render();
 			renderer->render(window);
 
 			window->render();

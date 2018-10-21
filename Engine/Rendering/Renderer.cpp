@@ -23,6 +23,8 @@
 
 #include "../System/Window.hpp"
 
+#include "../Rendering/Transformable.hpp"
+
 #include <GL/glew.h>
 
 namespace Miruela
@@ -47,9 +49,15 @@ namespace Miruela
 	}
 
 
-	void Renderer::submit(Renderable * mesh)
+	ShaderProgram * Renderer::getShaderProgram()
 	{
-		renderables.push_back(mesh);
+		return shaderProgram;
+	}
+
+
+	void Renderer::submit(Entity * entity)
+	{
+		renderables.push_back(std::make_pair<Transformable*, Renderable*>(entity->getComponent<Transformable>(), entity->getComponent<Renderable>()));
 	}
 
 
@@ -59,9 +67,10 @@ namespace Miruela
 		shaderProgram->setMatrixUniform("projection", Matrix::orthographic(0, window->getSize().x, 0, window->getSize().y, -1.0f, 1.0f));
 		while(!renderables.empty())
 		{
-			auto renderable = renderables.front(); renderables.pop_front();
-			renderable->render(shaderProgram);
-			glDrawElements(GL_TRIANGLES, renderable->getIndicesCount(), GL_UNSIGNED_INT, nullptr);
+			auto pair = renderables.front(); renderables.pop_front();
+			shaderProgram->setMatrixUniform("transformation", pair.first->getMatrix());
+			pair.second->render();
+			glDrawElements(GL_TRIANGLES, pair.second->getIndicesCount(), GL_UNSIGNED_INT, nullptr);
 		}
 	}
 }

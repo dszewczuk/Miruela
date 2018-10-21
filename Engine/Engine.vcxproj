@@ -40,6 +40,8 @@
     <ClCompile Include="System\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Core\Component.hpp" />
+    <ClInclude Include="Core\Entity.hpp" />
     <ClInclude Include="Core\Game.hpp" />
     <ClInclude Include="Core\GameState.hpp" />
     <ClInclude Include="Core\ResourceManager.hpp" />

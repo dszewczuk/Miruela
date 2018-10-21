@@ -15,18 +15,23 @@
 
 #pragma once
 
+#include "../Core/Component.hpp"
+
 namespace Miruela
 {
+	class Entity;
 	class ShaderProgram;
-	class Renderable
+	class Renderable : public Component
 	{
 	public:
-		Renderable(const unsigned int & indicesCount);
+		Renderable(Entity * entity, ShaderProgram * shaderProgram, const unsigned int & indicesCount);
 
-		virtual void render(ShaderProgram * shaderProgram) = 0;
+		virtual void render() = 0;
+		virtual void update(const float & deltaTime) {};
 
 		unsigned int getIndicesCount() const;
-	private:
+	protected:
 		unsigned int indicesCount;
+		ShaderProgram * shaderProgram;
 	};
 }
