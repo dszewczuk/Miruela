@@ -29,6 +29,7 @@ namespace Miruela
 		GameState(Game * game)
 			:game(game)
 		{
+			game->gameState = this;
 			resourceManager = new ResourceManager();
 		}
 
@@ -38,7 +39,6 @@ namespace Miruela
 		}
 
 		virtual void update(const float & deltaTime) = 0;
-		virtual void handleEvent(EventManager * eventManager) = 0;
 		virtual void render() = 0;
 
 		Game * getGame() const

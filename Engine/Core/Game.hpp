@@ -29,13 +29,13 @@ namespace Miruela
 
 		void run();
 
-		void setGameState(GameState * gameState);
-
 		Renderer * getRenderer() const;
 		Window * getWindow() const;
 	private:
 		Window * window;
 		Renderer * renderer;
 		GameState * gameState;
+
+		friend class GameState;
 	};
 }

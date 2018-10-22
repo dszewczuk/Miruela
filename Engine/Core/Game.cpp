@@ -46,7 +46,7 @@ namespace Miruela
 		{
 			while (eventManager.pollEvents())
 			{
-				gameState->handleEvent(&eventManager);
+
 			}
 			gameState->update(1.0f);
 
@@ -59,12 +59,6 @@ namespace Miruela
 		}
 	}
 
-
-	void Game::setGameState(GameState * gameState)
-	{
-		gameState->game = this;
-		this->gameState = gameState;
-	}
 	
 	
 	Renderer * Game::getRenderer() const

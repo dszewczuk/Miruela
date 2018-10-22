@@ -57,10 +57,6 @@ public:
 		
 	}
 
-	void handleEvent(Miruela::EventManager * eventManager) override
-	{
-	}
-
 private:
 	Miruela::Entity * player;
 };
@@ -69,7 +65,6 @@ int main()
 {
 	Miruela::Game game(800, 600);
 	MainGameState state(&game);
-	game.setGameState(&state);
 	game.run();
 
 	return 0;
