@@ -17,8 +17,8 @@
 
 namespace Miruela
 {
-	Renderable::Renderable(Entity * entity, ShaderProgram * shaderProgram, const unsigned int & indicesCount)
-		:Component(entity), indicesCount(indicesCount), shaderProgram(shaderProgram)
+	Renderable::Renderable(Entity * entity, const unsigned int & indicesCount)
+		:Component(entity), indicesCount(indicesCount)
 	{
 	}
 

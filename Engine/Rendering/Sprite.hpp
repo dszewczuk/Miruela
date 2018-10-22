@@ -29,7 +29,7 @@ namespace Miruela
 	class Sprite : public Renderable
 	{
 	public:
-		Sprite(Entity * entity, Texture * texture, ShaderProgram * shaderProgram);
+		Sprite(Entity * entity, Texture * texture);
 		~Sprite();
 
 		void render() override;

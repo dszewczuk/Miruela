@@ -24,7 +24,7 @@ namespace Miruela
 	class Entity
 	{
 	public:
-		template<class T1, class T2, class ... Types>
+		template<class T1, class T2, class ... Types> //Simplification of t1 and t2
 		void appendComponent(Types && ... args)
 		{
 			components[typeid(T1).name()] = new T2(this, args...);

@@ -24,7 +24,7 @@ namespace Miruela
 	class Renderable : public Component
 	{
 	public:
-		Renderable(Entity * entity, ShaderProgram * shaderProgram, const unsigned int & indicesCount);
+		Renderable(Entity * entity, const unsigned int & indicesCount);
 
 		virtual void render() = 0;
 		virtual void update(const float & deltaTime) {};
@@ -32,6 +32,5 @@ namespace Miruela
 		unsigned int getIndicesCount() const;
 	protected:
 		unsigned int indicesCount;
-		ShaderProgram * shaderProgram;
 	};
 }

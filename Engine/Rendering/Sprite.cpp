@@ -28,8 +28,8 @@
 
 namespace Miruela
 {
-	Sprite::Sprite(Entity * entity, Texture * texture, ShaderProgram * shaderProgram)
-		:Renderable(entity, shaderProgram, 6), texture(texture)
+	Sprite::Sprite(Entity * entity, Texture * texture)
+		:Renderable(entity, 6), texture(texture)
 	{
 		std::vector<Miruela::Vector3> vertices =
 		{
