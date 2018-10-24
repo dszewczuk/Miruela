@@ -28,6 +28,7 @@ namespace Miruela
 	{
 		window = new Window(Vector2(width, height));
 		renderer = new Renderer("vs.glsl", "fs.glsl");
+		event = new Event;
 	}
 
 
@@ -35,6 +36,7 @@ namespace Miruela
 	{
 		delete window;
 		delete renderer;
+		delete event;
 	}
 
 
@@ -42,12 +44,17 @@ namespace Miruela
 	{
 		EventManager eventManager;
 
-		while (!eventManager.isWindowClosed())
+		bool quit = false;
+		while (!quit)
 		{
-			while (eventManager.pollEvents())
+			while (eventManager.pollEvents(event))
 			{
+				if (event->state == Event::WINDOW_CLOSED)
+					quit = true;
 
+				gameState->onEvent(event);
 			}
+
 			gameState->update(1.0f);
 
 			window->clear(0.2, 0.2, 0.2, 0.0);

@@ -15,16 +15,35 @@
 
 #include "EventManager.hpp"
 
+#include <SDL_events.h>
+
 namespace Miruela
 {
-	int EventManager::pollEvents()
+	bool EventManager::pollEvents(Event * event)
 	{
-		return SDL_PollEvent(&event);
-	}
+		SDL_Event e;
+		if (SDL_PollEvent(&e))
+		{
+			if (e.type == SDL_QUIT)
+				event->state = Event::WINDOW_CLOSED;
+			
+			if (e.type == SDL_MOUSEBUTTONDOWN)
+				event->state = Event::MOUSEBUTTON_DOWN;
 
+			if (e.type == SDL_MOUSEBUTTONUP)
+				event->state = Event::MOUSEBUTTON_UP;
 
-	bool EventManager::isWindowClosed()
-	{
-		return event.type == SDL_QUIT;
+			if (e.type == SDL_KEYDOWN)
+				event->state = Event::KEY_DOWN;
+
+			if (e.type == SDL_KEYUP)
+				event->state = Event::KEY_UP;
+
+			return 1;
+		}
+		else
+		{
+			return 0;
+		}
 	}
 }

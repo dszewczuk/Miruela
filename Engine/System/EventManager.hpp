@@ -15,16 +15,13 @@
 
 #pragma once
 
-#include <SDL_events.h> //gotta delete this soon :(
+#include "Event.hpp"
 
 namespace Miruela
 {
 	class EventManager
 	{
 	public:
-		int pollEvents();
-		bool isWindowClosed();
-	private:
-		SDL_Event event;
+		bool pollEvents(Event * event);
 	};
 };

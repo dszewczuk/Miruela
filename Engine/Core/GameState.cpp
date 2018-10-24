@@ -33,6 +33,7 @@ namespace Miruela
 		delete resourceManager;
 	}
 
+
 	Game * GameState::getGame() const
 	{
 		return game;

@@ -61,6 +61,7 @@
     <ClInclude Include="Rendering\Sprite.hpp" />
     <ClInclude Include="Rendering\Texture.hpp" />
     <ClInclude Include="Rendering\VertexArray.hpp" />
+    <ClInclude Include="System\Event.hpp" />
     <ClInclude Include="System\EventManager.hpp" />
     <ClInclude Include="System\Resource.hpp" />
     <ClInclude Include="System\ResourceManager.hpp" />

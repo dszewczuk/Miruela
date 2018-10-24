@@ -20,6 +20,7 @@ namespace Miruela
 	class Window;
 	class Renderer;
 	class GameState;
+	class Event;
 
 	class Game
 	{
@@ -35,6 +36,7 @@ namespace Miruela
 		Window * window;
 		Renderer * renderer;
 		GameState * gameState;
+		Event * event;
 
 		friend class GameState;
 	};

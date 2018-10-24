@@ -15,35 +15,22 @@
 
 #pragma once
 
-#include "../System/ResourceManager.hpp"
-
-#include "Entity.hpp"
-
 namespace Miruela
 {
-	class Game;
-	class EventManager;
-	class ShaderProgram;
-	class Event;
-	
-	class GameState
+	struct Event
 	{
-	public:
-		GameState(Game * game);
-		~GameState();
+		enum State
+		{
+			MOUSE_MOVED = 0,
+			MOUSEBUTTON_UP,
+			MOUSEBUTTON_DOWN,
 
-		virtual void update(const float & deltaTime) = 0;
-		virtual void onEvent(Event * event) = 0;
-		virtual void render() = 0;
+			KEY_UP,
+			KEY_DOWN,
 
-		Game * getGame() const;
-		ResourceManager * getResourceManager() const;
-	public:
-		Entity * root;
-	private:
-		Game * game;
-		ResourceManager * resourceManager;
+			WINDOW_CLOSED
+		};
 
-		friend class Game;
+		State state;
 	};
 }

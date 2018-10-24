@@ -23,6 +23,10 @@
 
 #include "Math/Vector3.hpp"
 
+#include "System/Event.hpp"
+
+#include <iostream>
+
 #undef main
 
 class MainGameState : public Miruela::GameState
@@ -47,6 +51,12 @@ public:
 	void update(const float & deltaTime) override
 	{
 		
+	}
+
+	void onEvent(Miruela::Event * event) override
+	{
+		if (event->state == Miruela::Event::KEY_DOWN)
+			player->getComponent<Miruela::Transformable>()->move({ 1.f, 0.f, 0.f });
 	}
 
 private:
