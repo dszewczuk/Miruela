@@ -17,7 +17,7 @@
 
 #include "Renderable.hpp"
 
-#include "Transformable.hpp"
+#include "../Math/Transformable.hpp"
 
 #include "../Math/Vector2.hpp"
 

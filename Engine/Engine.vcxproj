@@ -24,6 +24,7 @@
     <ClCompile Include="Core\GameState.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Math\Matrix.cpp" />
+    <ClCompile Include="Math\Transformable.cpp" />
     <ClCompile Include="Math\Vector2.cpp" />
     <ClCompile Include="Math\Vector3.cpp" />
     <ClCompile Include="Math\Vector4.cpp" />
@@ -36,7 +37,6 @@
     <ClCompile Include="Rendering\ShaderProgram.cpp" />
     <ClCompile Include="Rendering\Sprite.cpp" />
     <ClCompile Include="Rendering\Texture.cpp" />
-    <ClCompile Include="Rendering\Transformable.cpp" />
     <ClCompile Include="Rendering\VertexArray.cpp" />
     <ClCompile Include="System\EventManager.cpp" />
     <ClCompile Include="System\Window.cpp" />
@@ -46,8 +46,8 @@
     <ClInclude Include="Core\Entity.hpp" />
     <ClInclude Include="Core\Game.hpp" />
     <ClInclude Include="Core\GameState.hpp" />
-    <ClInclude Include="Core\ResourceManager.hpp" />
     <ClInclude Include="Math\Matrix.hpp" />
+    <ClInclude Include="Math\Transformable.hpp" />
     <ClInclude Include="Math\Vector2.hpp" />
     <ClInclude Include="Math\Vector3.hpp" />
     <ClInclude Include="Math\Vector4.hpp" />
@@ -56,14 +56,14 @@
     <ClInclude Include="Rendering\Mesh.hpp" />
     <ClInclude Include="Rendering\Renderable.hpp" />
     <ClInclude Include="Rendering\Renderer.hpp" />
-    <ClInclude Include="Rendering\Resource.hpp" />
     <ClInclude Include="Rendering\Shader.hpp" />
     <ClInclude Include="Rendering\ShaderProgram.hpp" />
     <ClInclude Include="Rendering\Sprite.hpp" />
     <ClInclude Include="Rendering\Texture.hpp" />
-    <ClInclude Include="Rendering\Transformable.hpp" />
     <ClInclude Include="Rendering\VertexArray.hpp" />
     <ClInclude Include="System\EventManager.hpp" />
+    <ClInclude Include="System\Resource.hpp" />
+    <ClInclude Include="System\ResourceManager.hpp" />
     <ClInclude Include="System\Window.hpp" />
   </ItemGroup>
   <ItemGroup>

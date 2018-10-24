@@ -17,12 +17,9 @@
 
 #include "Texture.hpp"
 #include "Mesh.hpp"
-#include "ShaderProgram.hpp"
-#include "Transformable.hpp"
 
 #include "../Math/Vector2.hpp"
 #include "../Math/Vector3.hpp"
-#include "../Math/Matrix.hpp"
 
 #include <vector>
 

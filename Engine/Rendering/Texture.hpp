@@ -17,7 +17,7 @@
 
 #include <string>
 
-#include "Resource.hpp"
+#include "../System/Resource.hpp"
 
 namespace Miruela
 {

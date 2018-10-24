@@ -15,7 +15,7 @@
 
 #pragma once
 
-#include "ResourceManager.hpp"
+#include "../System/ResourceManager.hpp"
 
 #include "Entity.hpp"
 
