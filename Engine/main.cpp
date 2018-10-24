@@ -20,12 +20,8 @@
 #include "Rendering/Texture.hpp"
 #include "Rendering/Sprite.hpp"
 #include "Rendering/Renderer.hpp"
-#include "Rendering/ShaderProgram.hpp"
 
 #include "Math/Vector3.hpp"
-#include "Math/Matrix.hpp"
-
-#include "System/EventManager.hpp"
 
 #undef main
 
