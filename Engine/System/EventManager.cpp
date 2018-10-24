@@ -34,7 +34,24 @@ namespace Miruela
 				event->state = Event::MOUSEBUTTON_UP;
 
 			if (e.type == SDL_KEYDOWN)
+			{
 				event->state = Event::KEY_DOWN;
+				switch (e.key.keysym.sym)
+				{
+				case SDLK_w:
+					event->keys['w'] = true;
+					break;
+				case SDLK_s:
+					event->keys['s'] = true;
+					break;
+				case SDLK_a:
+					event->keys['a'] = true;
+					break;
+				case SDLK_d:
+					event->keys['d'] = true;
+					break;
+				}
+			}
 
 			if (e.type == SDL_KEYUP)
 				event->state = Event::KEY_UP;

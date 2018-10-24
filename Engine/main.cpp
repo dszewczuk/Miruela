@@ -55,7 +55,7 @@ public:
 
 	void onEvent(Miruela::Event * event) override
 	{
-		if (event->state == Miruela::Event::KEY_DOWN)
+		if (event->keys['s'])
 			player->getComponent<Miruela::Transformable>()->move({ 1.f, 0.f, 0.f });
 	}
 

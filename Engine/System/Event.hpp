@@ -15,6 +15,8 @@
 
 #pragma once
 
+#include <map>
+
 namespace Miruela
 {
 	struct Event
@@ -31,6 +33,12 @@ namespace Miruela
 			WINDOW_CLOSED
 		};
 
+		enum Keys
+		{
+			W, A, S, D
+		};
+
 		State state;
+		std::map<char, bool> keys;
 	};
 }
