@@ -42,11 +42,17 @@ namespace Miruela
 
 	void Game::run()
 	{
+		float now = 0, last = 0, delta = 0;
+
 		EventManager eventManager;
 
 		bool quit = false;
 		while (!quit)
 		{
+			now = SDL_GetTicks();
+			delta = now - last;
+			last = now;
+
 			while (eventManager.pollEvents(event))
 			{
 				if (event->state == Event::WINDOW_CLOSED)
@@ -55,7 +61,7 @@ namespace Miruela
 				gameState->onEvent(event);
 			}
 
-			gameState->update(1.0f);
+			gameState->update(delta);
 
 			window->clear(0.2, 0.2, 0.2, 0.0);
 

@@ -50,24 +50,29 @@ public:
 
 	void update(const float & deltaTime) override
 	{
-		
+		player->getComponent<Miruela::Transformable>()->move(relative * deltaTime);
 	}
 
 	void onEvent(Miruela::Event * event) override
 	{
 		if (event->keys['w'])
-			player->getComponent<Miruela::Transformable>()->move({ 0.f, -1.f, 0.f });
+			relative.y = -1.0f;
 		else if (event->keys['s'])
-			player->getComponent<Miruela::Transformable>()->move({ 0.f, 1.f, 0.f });
+			relative.y = 1.0f;
+		else
+			relative.y = 0.0f;
 
-		else if (event->keys['a'])
-			player->getComponent<Miruela::Transformable>()->move({ -1.f, 0.f, 0.f });
+		if (event->keys['a'])
+			relative.x = -1.f;
 		else if (event->keys['d'])
-			player->getComponent<Miruela::Transformable>()->move({ 1.f, 0.f, 0.f });
+			relative.x = 1.f;
+		else
+			relative.x = 0.f;
 	}
 
 private:
 	Miruela::Entity * player;
+	Miruela::Vector3 relative;
 };
 
 int main()
