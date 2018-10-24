@@ -23,16 +23,32 @@ namespace Miruela
 	{
 	}
 
+
+	Entity::~Entity()
+	{
+		for (auto & child : children)
+		{
+			delete child.second;
+		}
+
+		for (auto & component : components)
+		{
+			delete component.second;
+		}
+	}
+
+
 	Entity * Entity::appendChild(const std::string & name)
 	{
-		entities[name] = new Entity;
-		entities[name]->parent = this;
+		children[name] = new Entity;
+		children[name]->parent = this;
 
 		return getChild(name);
 	}
 
+
 	Entity * Entity::getChild(const std::string & name)
 	{
-		return entities[name];
+		return children[name];
 	}
 }

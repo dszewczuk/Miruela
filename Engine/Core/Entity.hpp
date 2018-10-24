@@ -27,6 +27,7 @@ namespace Miruela
 	{
 	public:
 		Entity();
+		~Entity();
 
 		template<class T1, class T2=T1, class ... Types>
 		void appendComponent(Types && ... args)
@@ -44,7 +45,7 @@ namespace Miruela
 		Entity * getChild(const std::string & name);
 	private:
 		std::unordered_map<std::string, Component*> components;
-		std::unordered_map<std::string, Entity*> entities;
+		std::unordered_map<std::string, Entity*> children;
 		Entity * parent;
 	};
 }

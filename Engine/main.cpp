@@ -43,11 +43,6 @@ public:
 		player->appendComponent<Miruela::Renderable, Miruela::Sprite>(getResourceManager()->get<Miruela::Texture>("texture"));
 	}
 
-	~MainGameState()
-	{
-		delete player;
-	}
-
 	void render() override
 	{
 		getGame()->getRenderer()->submit(player);
