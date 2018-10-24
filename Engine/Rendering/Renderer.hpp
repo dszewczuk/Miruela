@@ -36,6 +36,7 @@ namespace Miruela
 
 		ShaderProgram * getShaderProgram();
 
+		//!Renderable & Transformable components required
 		void submit(Entity * entity);
 	private:
 		void render(const Window * window);

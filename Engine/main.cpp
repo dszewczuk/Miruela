@@ -15,6 +15,7 @@
 
 #include "Core/Game.hpp"
 #include "Core/GameState.hpp"
+#include "Core/Entity.hpp"
 
 #include "Rendering/Texture.hpp"
 #include "Rendering/Sprite.hpp"
@@ -36,7 +37,7 @@ public:
 	{
 		getResourceManager()->load<Miruela::Texture>("texture", "texture.png");
 
-		player = new Miruela::Entity;
+		player = root->appendChild("player");
 
 		player->appendComponent<Miruela::Transformable>(Miruela::Vector3(0, 0, 0), Miruela::Vector3(64, 64, 0));
 		player->appendComponent<Miruela::Renderable, Miruela::Sprite>(getResourceManager()->get<Miruela::Texture>("texture"));

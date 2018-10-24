@@ -17,6 +17,8 @@
 
 #include "ResourceManager.hpp"
 
+#include "Entity.hpp"
+
 namespace Miruela
 {
 	class Game;
@@ -26,31 +28,16 @@ namespace Miruela
 	class GameState
 	{
 	public:
-		GameState(Game * game)
-			:game(game)
-		{
-			game->gameState = this;
-			resourceManager = new ResourceManager();
-		}
-
-		~GameState()
-		{
-			delete resourceManager;
-		}
+		GameState(Game * game);
+		~GameState();
 
 		virtual void update(const float & deltaTime) = 0;
 		virtual void render() = 0;
 
-		Game * getGame() const
-		{
-			return game;
-		}
-
-		ResourceManager * getResourceManager() const
-		{
-			return resourceManager;
-		}
-
+		Game * getGame() const;
+		ResourceManager * getResourceManager() const;
+	public:
+		Entity * root;
 	private:
 		Game * game;
 		ResourceManager * resourceManager;

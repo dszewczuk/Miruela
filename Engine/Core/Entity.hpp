@@ -13,6 +13,8 @@
 	Also add information on how to contact you by electronic and paper mail.
 */
 
+#pragma once
+
 #include <unordered_map>
 #include <typeinfo>
 #include <string>
@@ -24,7 +26,9 @@ namespace Miruela
 	class Entity
 	{
 	public:
-		template<class T1, class T2=T1, class ... Types> //Simplification of t1 and t2
+		Entity();
+
+		template<class T1, class T2=T1, class ... Types>
 		void appendComponent(Types && ... args)
 		{
 			components[typeid(T1).name()] = new T2(this, args...);
@@ -36,7 +40,11 @@ namespace Miruela
 			return dynamic_cast<T*>(components[typeid(T).name()]);
 		}
 
+		Entity * appendChild(const std::string & name);
+		Entity * getChild(const std::string & name);
 	private:
 		std::unordered_map<std::string, Component*> components;
+		std::unordered_map<std::string, Entity*> entities;
+		Entity * parent;
 	};
 }
