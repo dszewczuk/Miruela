@@ -33,7 +33,7 @@ class MainGameState : public Miruela::GameState
 {
 public:
 	MainGameState(Miruela::Game * game)
-		:GameState(game)
+		:GameState(game), speed(0.5f)
 	{
 		getResourceManager()->load<Miruela::Texture>("texture", "texture.png");
 
@@ -56,23 +56,23 @@ public:
 	void onEvent(Miruela::Event * event) override
 	{
 		if (event->keys['w'])
-			relative.y = -1.0f;
+			relative = { 0, -speed, 0 };
 		else if (event->keys['s'])
-			relative.y = 1.0f;
-		else
-			relative.y = 0.0f;
+			relative = { 0, speed, 0 };
 
-		if (event->keys['a'])
-			relative.x = -1.f;
+		else if (event->keys['a'])
+			relative = { -speed, 0, 0 };
 		else if (event->keys['d'])
-			relative.x = 1.f;
+			relative = { speed, 0, 0 };
+
 		else
-			relative.x = 0.f;
+			relative = { 0 };
 	}
 
 private:
 	Miruela::Entity * player;
 	Miruela::Vector3 relative;
+	float speed;
 };
 
 int main()
