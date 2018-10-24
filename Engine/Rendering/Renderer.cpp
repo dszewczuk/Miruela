@@ -15,7 +15,6 @@
 
 #include "Renderer.hpp"
 
-#include "Mesh.hpp"
 #include "Shader.hpp"
 #include "ShaderProgram.hpp"
 #include "Mesh.hpp"
@@ -23,7 +22,7 @@
 
 #include "../System/Window.hpp"
 
-#include "../Rendering/Transformable.hpp"
+#include "../Math/Transformable.hpp"
 
 #include <GL/glew.h>
 

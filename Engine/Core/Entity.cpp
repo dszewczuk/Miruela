@@ -13,7 +13,6 @@
 	Also add information on how to contact you by electronic and paper mail.
 */
 
-
 #include "Entity.hpp"
 
 namespace Miruela

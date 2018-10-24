@@ -16,8 +16,6 @@
 #include "Window.hpp"
 
 #include <GL/glew.h>
-#include <cassert>
-#include <iostream>
 
 namespace Miruela
 {

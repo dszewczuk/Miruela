@@ -15,9 +15,9 @@
 
 #include "Matrix.hpp"
 
-#include <sstream>
-
 #include "Vector3.hpp"
+
+#include <sstream>
 
 namespace Miruela
 {

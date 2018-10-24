@@ -41,6 +41,7 @@ namespace Miruela
 	private:
 		Game * game;
 		ResourceManager * resourceManager;
+
 		friend class Game;
 	};
 }
