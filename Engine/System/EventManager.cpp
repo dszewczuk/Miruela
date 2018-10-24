@@ -54,7 +54,24 @@ namespace Miruela
 			}
 
 			if (e.type == SDL_KEYUP)
+			{
 				event->state = Event::KEY_UP;
+				switch (e.key.keysym.sym)
+				{
+				case SDLK_w:
+					event->keys['w'] = false;
+					break;
+				case SDLK_s:
+					event->keys['s'] = false;
+					break;
+				case SDLK_a:
+					event->keys['a'] = false;
+					break;
+				case SDLK_d:
+					event->keys['d'] = false;
+					break;
+				}
+			}
 
 			return 1;
 		}

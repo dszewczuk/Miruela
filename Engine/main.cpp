@@ -55,7 +55,14 @@ public:
 
 	void onEvent(Miruela::Event * event) override
 	{
-		if (event->keys['s'])
+		if (event->keys['w'])
+			player->getComponent<Miruela::Transformable>()->move({ 0.f, -1.f, 0.f });
+		else if (event->keys['s'])
+			player->getComponent<Miruela::Transformable>()->move({ 0.f, 1.f, 0.f });
+
+		else if (event->keys['a'])
+			player->getComponent<Miruela::Transformable>()->move({ -1.f, 0.f, 0.f });
+		else if (event->keys['d'])
 			player->getComponent<Miruela::Transformable>()->move({ 1.f, 0.f, 0.f });
 	}
 
