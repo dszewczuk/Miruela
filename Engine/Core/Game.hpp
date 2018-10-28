@@ -33,6 +33,7 @@ namespace Miruela
 
 		Renderer * getRenderer() const;
 		Window * getWindow() const;
+		Camera * getCamera() const;
 	private:
 		Window * window;
 		Camera * camera;

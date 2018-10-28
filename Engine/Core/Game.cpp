@@ -86,4 +86,10 @@ namespace Miruela
 	{
 		return window;
 	}
+
+
+	Camera * Game::getCamera() const
+	{
+		return camera;
+	}
 }
