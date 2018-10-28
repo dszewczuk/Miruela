@@ -22,6 +22,10 @@ namespace Miruela
 	class Camera
 	{
 	public:
+		Camera(const Matrix & matrix)
+			: matrix(matrix)
+		{}
+
 		Matrix getMatrix()
 		{
 			return matrix;
