@@ -31,6 +31,7 @@
     <ClCompile Include="Rendering\Buffer.cpp" />
     <ClCompile Include="Rendering\Camera.cpp" />
     <ClCompile Include="Rendering\Mesh.cpp" />
+    <ClCompile Include="Rendering\OrthographicCamera.cpp" />
     <ClCompile Include="Rendering\Renderable.cpp" />
     <ClCompile Include="Rendering\Renderer.cpp" />
     <ClCompile Include="Rendering\Shader.cpp" />
@@ -54,6 +55,7 @@
     <ClInclude Include="Rendering\Buffer.hpp" />
     <ClInclude Include="Rendering\Camera.hpp" />
     <ClInclude Include="Rendering\Mesh.hpp" />
+    <ClInclude Include="Rendering\OrthographicCamera.hpp" />
     <ClInclude Include="Rendering\Renderable.hpp" />
     <ClInclude Include="Rendering\Renderer.hpp" />
     <ClInclude Include="Rendering\Shader.hpp" />

@@ -15,12 +15,18 @@
 
 #pragma once
 
+#include "../Math/Matrix.hpp"
+
 namespace Miruela
 {
 	class Camera
 	{
 	public:
-
-	private:
+		Matrix getMatrix()
+		{
+			return matrix;
+		}
+	protected:
+		Matrix matrix;
 	};
 }

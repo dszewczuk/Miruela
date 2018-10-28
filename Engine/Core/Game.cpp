@@ -21,13 +21,15 @@
 #include "../System/EventManager.hpp"
 
 #include "../Rendering/Renderer.hpp"
+#include "../Rendering/OrthographicCamera.hpp"
 
 namespace Miruela
 {
 	Game::Game(const int & width, const int & height)
 	{
-		window = new Window(Vector2(width, height));
-		renderer = new Renderer("vs.glsl", "fs.glsl");
+		window = new Window(Vector2((float)width, (float)height));
+		camera = new OrthographicCamera(window);
+		renderer = new Renderer(camera, "vs.glsl", "fs.glsl");
 		event = new Event;
 	}
 
@@ -49,7 +51,7 @@ namespace Miruela
 		bool quit = false;
 		while (!quit)
 		{
-			now = SDL_GetTicks();
+			now = (float)SDL_GetTicks();
 			delta = now - last;
 			last = now;
 
@@ -63,7 +65,7 @@ namespace Miruela
 
 			gameState->update(delta);
 
-			window->clear(0.2, 0.2, 0.2, 0.0);
+			window->clear(0.2f, 0.2f, 0.2f, 0.0f);
 
 			gameState->render();
 			renderer->render(window);

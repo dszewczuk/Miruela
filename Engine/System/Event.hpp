@@ -33,11 +33,6 @@ namespace Miruela
 			WINDOW_CLOSED
 		};
 
-		enum Keys
-		{
-			W, A, S, D
-		};
-
 		State state;
 		std::map<char, bool> keys;
 	};

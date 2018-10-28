@@ -21,6 +21,7 @@ namespace Miruela
 	class Renderer;
 	class GameState;
 	class Event;
+	class Camera;
 
 	class Game
 	{
@@ -34,6 +35,7 @@ namespace Miruela
 		Window * getWindow() const;
 	private:
 		Window * window;
+		Camera * camera;
 		Renderer * renderer;
 		GameState * gameState;
 		Event * event;

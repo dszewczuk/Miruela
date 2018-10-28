@@ -20,6 +20,8 @@
 
 #include "../Core/Entity.hpp"
 
+#include "Camera.hpp"
+
 namespace Miruela
 {
 	class Transformable;
@@ -31,7 +33,7 @@ namespace Miruela
 	class Renderer
 	{
 	public:
-		Renderer(const std::string & vsPath, const std::string & fsPath);
+		Renderer(Camera * camera, const std::string & vsPath, const std::string & fsPath);
 		~Renderer();
 
 		ShaderProgram * getShaderProgram();
@@ -42,6 +44,7 @@ namespace Miruela
 		void render(const Window * window);
 	private:
 		ShaderProgram * shaderProgram;
+		Camera * camera;
 		std::deque<std::pair<Transformable*, Renderable*>> renderables;
 
 		friend class Game;
