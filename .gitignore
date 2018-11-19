@@ -38,3 +38,5 @@ Engine.vcxproj.user
 Engine/.vs
 
 .vs
+
+Dependencies/

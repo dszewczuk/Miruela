@@ -13,7 +13,6 @@
 	Also add information on how to contact you by electronic and paper mail.
 */
 
-
 #pragma once
 
 namespace Miruela

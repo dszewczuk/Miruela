@@ -15,6 +15,8 @@
 
 #include "Window.hpp"
 
+#include "SDLWindow.hpp"
+
 #include <GL/glew.h>
 
 namespace Miruela
@@ -22,8 +24,7 @@ namespace Miruela
 	Window::Window(const Miruela::Vector2 & size)
 		:size(size)
 	{
-		window = SDL_CreateWindow("Engine", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, size.x, size.y, SDL_WINDOW_OPENGL);
-		context = SDL_GL_CreateContext(window);
+		window = new SDLWindow(size);
 
 		glewExperimental = GL_TRUE;
 		glewInit();
@@ -32,8 +33,7 @@ namespace Miruela
 
 	Window::~Window()
 	{
-		SDL_GL_DeleteContext(context);
-		SDL_DestroyWindow(window);
+		delete window;
 	}
 
 
@@ -52,6 +52,6 @@ namespace Miruela
 
 	void Window::render() const
 	{
-		SDL_GL_SwapWindow(window);
+		window->swap();
 	}
 }

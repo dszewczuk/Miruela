@@ -15,12 +15,11 @@
 
 #pragma once
 
-#include <SDL.h> //gotta delete this soon :(
-
 #include "../Math/Vector2.hpp"
 
 namespace Miruela
 {
+	class SDLWindow;
 	class Window
 	{
 	public:
@@ -32,9 +31,7 @@ namespace Miruela
 		void clear(const float & r, const float & g, const float & b, const float & a) const;
 		void render() const;
 	private:
-		SDL_Window * window;
-		SDL_GLContext context;
-
+		SDLWindow * window;
 		Miruela::Vector2 size;
 	};
 }

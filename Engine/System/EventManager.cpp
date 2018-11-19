@@ -15,6 +15,8 @@
 
 #include "EventManager.hpp"
 
+#include <string>
+
 #include <SDL_events.h>
 
 namespace Miruela

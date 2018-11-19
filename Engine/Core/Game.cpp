@@ -15,6 +15,8 @@
 
 #include "Game.hpp"
 
+#include <SDL.h>
+
 #include "GameState.hpp"
 
 #include "../System/Window.hpp"
@@ -23,13 +25,22 @@
 #include "../Rendering/Renderer.hpp"
 #include "../Rendering/OrthographicCamera.hpp"
 
+#include <Radon.hpp>
+
 namespace Miruela
 {
 	Game::Game(const int & width, const int & height)
 	{
-		window = new Window(Vector2((float)width, (float)height));
+		radon::File file("conf.ini");
+		std::string vertexShader = file.getSection("shaders")->getKey("vertex").getStringValue();
+		std::string fragmentShader = file.getSection("shaders")->getKey("fragment").getStringValue();
+
+		float w = file.getSection("resolution")->getKey("width").getFloatValue();
+		float h = file.getSection("resolution")->getKey("height").getFloatValue();
+		
+		window = new Window(Vector2(w, h));
 		camera = new OrthographicCamera(window);
-		renderer = new Renderer(camera, "vs.glsl", "fs.glsl");
+		renderer = new Renderer(camera, vertexShader, fragmentShader);
 		event = new Event;
 	}
 
@@ -39,6 +50,7 @@ namespace Miruela
 		delete window;
 		delete renderer;
 		delete event;
+		delete camera;
 	}
 
 
